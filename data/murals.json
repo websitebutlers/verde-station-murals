@@ -1,0 +1,377 @@
+[
+  {
+    "id": "abstract-behind-p",
+    "name": "Abstract behind P",
+    "location": {
+      "building": "Building C - Spot 1",
+      "coordinates": {
+        "lat": 33.306274,
+        "lng": -111.705125
+      }
+    },
+    "artist": {
+      "name": "MDMN",
+      "socialMedia": "madmanart"
+    },
+    "image": "/murals/abstract-behind-p.jpg",
+    "buildingCode": "14M"
+  },
+  {
+    "id": "birds",
+    "name": "Birds",
+    "location": {
+      "building": "Building C - Spot 3",
+      "coordinates": {
+        "lat": 33.306274,
+        "lng": -111.705125
+      }
+    },
+    "artist": {
+      "name": "Mac",
+      "socialMedia": "macsh_"
+    },
+    "image": "/murals/birds.jpg",
+    "buildingCode": "NA"
+  },
+  {
+    "id": "cardinal",
+    "name": "Cardinal",
+    "location": {
+      "building": "Building B1 - Spot 5",
+      "coordinates": {
+        "lat": 33.306274,
+        "lng": -111.705125
+      }
+    },
+    "artist": {
+      "name": "NA",
+      "socialMedia": ""
+    },
+    "image": "/murals/cardinal.jpg",
+    "buildingCode": "10M"
+  },
+  {
+    "id": "concrete-face",
+    "name": "Concrete Face",
+    "location": {
+      "building": "Building B2 - Spot 5",
+      "coordinates": {
+        "lat": 33.306274,
+        "lng": -111.705125
+      }
+    },
+    "artist": {
+      "name": "Price Goodman",
+      "socialMedia": "PriceGoodman"
+    },
+    "image": "/murals/concrete-face.jpg",
+    "buildingCode": "13M"
+  },
+  {
+    "id": "distorted-face",
+    "name": "Distorted Face",
+    "location": {
+      "building": "Building J - Spot 1",
+      "coordinates": {
+        "lat": 33.306274,
+        "lng": -111.705125
+      }
+    },
+    "artist": {
+      "name": "Tato Caraveo",
+      "socialMedia": "TatoCaraveo"
+    },
+    "image": "/murals/distorted-face.jpg",
+    "buildingCode": "16M"
+  },
+  {
+    "id": "dreamy-cotton-field",
+    "name": "Dreamy Cotton Field",
+    "location": {
+      "building": "Building F - Spot 1",
+      "coordinates": {
+        "lat": 33.306274,
+        "lng": -111.705125
+      }
+    },
+    "artist": {
+      "name": "Christina Thomas",
+      "socialMedia": "somethingsparkley"
+    },
+    "image": "/murals/dreamy-cotton-field.jpg",
+    "buildingCode": "6M"
+  },
+  {
+    "id": "electric-box",
+    "name": "Electric Box",
+    "location": {
+      "building": "Green",
+      "coordinates": {
+        "lat": 33.306274,
+        "lng": -111.705125
+      }
+    },
+    "artist": {
+      "name": "Just",
+      "socialMedia": "JustCreatedIt"
+    },
+    "image": "/murals/electric-box.jpg",
+    "buildingCode": "21M"
+  },
+  {
+    "id": "field-of-screams",
+    "name": "Field of Screams",
+    "location": {
+      "building": "Building F - Spot 1",
+      "coordinates": {
+        "lat": 33.306274,
+        "lng": -111.705125
+      }
+    },
+    "artist": {
+      "name": "Jason Begay",
+      "socialMedia": "PrimeAfterPrime"
+    },
+    "image": "/murals/field-of-screams.jpg",
+    "buildingCode": "5M"
+  },
+  {
+    "id": "gilbert-mural",
+    "name": "Gilbert Mural",
+    "location": {
+      "building": "Building E - Spot 1",
+      "coordinates": {
+        "lat": 33.306274,
+        "lng": -111.705125
+      }
+    },
+    "artist": {
+      "name": "Isaac Caruso",
+      "socialMedia": "Isaac.Caruso"
+    },
+    "image": "/murals/gilbert-mural.jpg",
+    "buildingCode": "9M"
+  },
+  {
+    "id": "girl-flower-pannels",
+    "name": "Girl & Flower Pannels",
+    "location": {
+      "building": "Building H/I - Spot 2",
+      "coordinates": {
+        "lat": 33.306274,
+        "lng": -111.705125
+      }
+    },
+    "artist": {
+      "name": "Clyde Thompson",
+      "socialMedia": "clyde_0000"
+    },
+    "image": "/murals/girl-flower-pannels.jpg",
+    "buildingCode": "18M"
+  },
+  {
+    "id": "horse-and-cowboy",
+    "name": "Horse and Cowboy",
+    "location": {
+      "building": "Building F - Spot 4",
+      "coordinates": {
+        "lat": 33.306274,
+        "lng": -111.705125
+      }
+    },
+    "artist": {
+      "name": "Ieter91",
+      "socialMedia": "GabrielPecinaArt"
+    },
+    "image": "/murals/horse-and-cowboy.jpg",
+    "buildingCode": "4M"
+  },
+  {
+    "id": "jimi-hendrix",
+    "name": "Jimi Hendrix",
+    "location": {
+      "building": "Building J - Spot 1",
+      "coordinates": {
+        "lat": 33.306274,
+        "lng": -111.705125
+      }
+    },
+    "artist": {
+      "name": "Smokey Joe",
+      "socialMedia": "SmokeyJoePaintingCo"
+    },
+    "image": "/murals/jimi-hendrix.jpg",
+    "buildingCode": "17M"
+  },
+  {
+    "id": "love-peace-adjacent-murals",
+    "name": "Love & Peace adjacent murals",
+    "location": {
+      "building": "Building C - Spot 3",
+      "coordinates": {
+        "lat": 33.306274,
+        "lng": -111.705125
+      }
+    },
+    "artist": {
+      "name": "Nyla Lee",
+      "socialMedia": "nyla.lee"
+    },
+    "image": "/murals/love-peace-adjacent-murals.jpg",
+    "buildingCode": "15M"
+  },
+  {
+    "id": "low-rider-truck",
+    "name": "Low Rider Truck",
+    "location": {
+      "building": "Building B2 - Spot 1",
+      "coordinates": {
+        "lat": 33.306274,
+        "lng": -111.705125
+      }
+    },
+    "artist": {
+      "name": "ABOMBTHEARTIST",
+      "socialMedia": "ABOMBTHEARTIST"
+    },
+    "image": "/murals/low-rider-truck.jpg",
+    "buildingCode": "11M"
+  },
+  {
+    "id": "manny-moe-jack",
+    "name": "Manny, Moe, & Jack",
+    "location": {
+      "building": "Building G - Spot 1",
+      "coordinates": {
+        "lat": 33.306274,
+        "lng": -111.705125
+      }
+    },
+    "artist": {
+      "name": "IZE",
+      "socialMedia": "ize_official"
+    },
+    "image": "/murals/manny-moe-jack.jpg",
+    "buildingCode": "20M"
+  },
+  {
+    "id": "musician",
+    "name": "Musician",
+    "location": {
+      "building": "Building J - Spot 4",
+      "coordinates": {
+        "lat": 33.306274,
+        "lng": -111.705125
+      }
+    },
+    "artist": {
+      "name": "Tato Caraveo",
+      "socialMedia": "TatoCaraveo"
+    },
+    "image": "/murals/musician.jpg",
+    "buildingCode": "2M"
+  },
+  {
+    "id": "navajo-hoop-dancer",
+    "name": "Navajo Hoop Dancer",
+    "location": {
+      "building": "Building B2 - Spot 3",
+      "coordinates": {
+        "lat": 33.306274,
+        "lng": -111.705125
+      }
+    },
+    "artist": {
+      "name": "Jessie Yazzie",
+      "socialMedia": "jessie.yazzie"
+    },
+    "image": "/murals/navajo-hoop-dancer.jpg",
+    "buildingCode": "12M"
+  },
+  {
+    "id": "peony",
+    "name": "Peony",
+    "location": {
+      "building": "Building H/I - Spot 1",
+      "coordinates": {
+        "lat": 33.306274,
+        "lng": -111.705125
+      }
+    },
+    "artist": {
+      "name": "Just",
+      "socialMedia": "JustCreatedIt"
+    },
+    "image": "/murals/peony.jpg",
+    "buildingCode": "19M"
+  },
+  {
+    "id": "shiny-statues",
+    "name": "Shiny Statues",
+    "location": {
+      "building": "Building E - Spot 3",
+      "coordinates": {
+        "lat": 33.306274,
+        "lng": -111.705125
+      }
+    },
+    "artist": {
+      "name": "Lucretia Tirva",
+      "socialMedia": "torvasm"
+    },
+    "image": "/murals/shiny-statues.jpg",
+    "buildingCode": "7M"
+  },
+  {
+    "id": "utility-box",
+    "name": "Utility Box",
+    "location": {
+      "building": "Building E - Spot 2",
+      "coordinates": {
+        "lat": 33.306274,
+        "lng": -111.705125
+      }
+    },
+    "artist": {
+      "name": "Smokey Joe",
+      "socialMedia": "SmokeyJoePaintingCo"
+    },
+    "image": "/murals/utility-box.jpg",
+    "buildingCode": "8M"
+  },
+  {
+    "id": "welcome",
+    "name": "Welcome",
+    "location": {
+      "building": "Building K - Spot 3",
+      "coordinates": {
+        "lat": 33.306274,
+        "lng": -111.705125
+      }
+    },
+    "artist": {
+      "name": "Tony Plak",
+      "socialMedia": "tonyplak"
+    },
+    "image": "/murals/welcome.jpg",
+    "buildingCode": "3M"
+  },
+  {
+    "id": "whimsical-tiger",
+    "name": "Whimsical Tiger",
+    "location": {
+      "building": "Building D - Spot 1",
+      "coordinates": {
+        "lat": 33.306274,
+        "lng": -111.705125
+      }
+    },
+    "artist": {
+      "name": "Bacon Cat",
+      "socialMedia": "Baconcat"
+    },
+    "image": "/murals/whimsical-tiger.jpg",
+    "buildingCode": "1M"
+  }
+]
+
