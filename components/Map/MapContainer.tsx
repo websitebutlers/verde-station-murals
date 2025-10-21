@@ -51,17 +51,24 @@ export default function MapContainer({
         if (response.ok) {
           const buildings = await response.json();
           setCustomBuildings(buildings);
-          console.log('Loaded buildings from file:', buildings);
+          console.log('✅ Loaded buildings from file:', buildings.length);
         }
       } catch (error) {
-        console.error('Error loading buildings:', error);
+        console.error('❌ Error loading buildings:', error);
       }
     };
     loadBuildings();
   }, []);
 
-  // Save buildings to API whenever they change
+  // Save buildings to API whenever they change (but not on initial load)
+  const isInitialMount = useRef(true);
   useEffect(() => {
+    // Skip save on initial mount (buildings just loaded from API)
+    if (isInitialMount.current) {
+      isInitialMount.current = false;
+      return;
+    }
+
     const saveBuildings = async () => {
       if (customBuildings.length === 0) return;
 
@@ -74,10 +81,10 @@ export default function MapContainer({
 
         if (response.ok) {
           const result = await response.json();
-          console.log('Saved buildings to file:', result);
+          console.log('💾 Saved buildings to file:', result.count);
         }
       } catch (error) {
-        console.error('Error saving buildings:', error);
+        console.error('❌ Error saving buildings:', error);
       }
     };
 
