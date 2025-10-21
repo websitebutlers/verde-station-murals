@@ -285,7 +285,7 @@ export default function MapContainer({
               id="custom-buildings-3d"
               type="fill-extrusion"
               paint={{
-                'fill-extrusion-color': '#F59E0B', // Amber color to match markers
+                'fill-extrusion-color': '#54905C', // Verde Station green
                 'fill-extrusion-height': ['get', 'height'],
                 'fill-extrusion-base': ['get', 'base_height'],
                 'fill-extrusion-opacity': 0.9,
