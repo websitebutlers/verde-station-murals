@@ -21,9 +21,11 @@ const VERDE_STATION_CENTER = {
   latitude: 33.3062741,
   longitude: -111.7051246,
   zoom: 17.5,
-  pitch: 60, // Tilt the map to see 3D buildings (60 degrees for dramatic effect)
-  bearing: -17.6 // Slight rotation for better building perspective
+  pitch: 0, // Flat view for easier tracing
+  bearing: 0 // No rotation
 };
+
+const BUILDINGS_STORAGE_KEY = 'verde-station-custom-buildings';
 
 export default function MapContainer({
   murals,
@@ -37,6 +39,29 @@ export default function MapContainer({
   const [buildingEditorActive, setBuildingEditorActive] = useState(false);
   const [currentBuildingPoints, setCurrentBuildingPoints] = useState<[number, number][]>([]);
   const [customBuildings, setCustomBuildings] = useState<CustomBuilding[]>([]);
+  const [useSatellite, setUseSatellite] = useState(true); // Start with satellite for tracing
+
+  // Load buildings from localStorage on mount
+  useEffect(() => {
+    const stored = localStorage.getItem(BUILDINGS_STORAGE_KEY);
+    if (stored) {
+      try {
+        const buildings = JSON.parse(stored);
+        setCustomBuildings(buildings);
+        console.log('Loaded buildings from localStorage:', buildings);
+      } catch (error) {
+        console.error('Error loading buildings from localStorage:', error);
+      }
+    }
+  }, []);
+
+  // Save buildings to localStorage whenever they change
+  useEffect(() => {
+    if (customBuildings.length > 0) {
+      localStorage.setItem(BUILDINGS_STORAGE_KEY, JSON.stringify(customBuildings));
+      console.log('Saved buildings to localStorage:', customBuildings);
+    }
+  }, [customBuildings]);
 
   // Add 3D buildings layer when map loads
   const handleMapLoad = useCallback(() => {
@@ -163,6 +188,10 @@ export default function MapContainer({
     setCurrentBuildingPoints([]);
   }, []);
 
+  const handleToggleSatellite = useCallback(() => {
+    setUseSatellite(prev => !prev);
+  }, []);
+
   return (
     <>
       <Map
@@ -170,7 +199,7 @@ export default function MapContainer({
         initialViewState={VERDE_STATION_CENTER}
         onLoad={handleMapLoad}
         onClick={handleMapClick}
-        mapStyle="mapbox://styles/mapbox/dark-v11"
+        mapStyle={useSatellite ? "mapbox://styles/mapbox/satellite-streets-v12" : "mapbox://styles/mapbox/dark-v11"}
         mapboxAccessToken={process.env.NEXT_PUBLIC_MAPBOX_TOKEN}
         style={{ width: '100%', height: '100%' }}
         attributionControl={false}
@@ -276,6 +305,8 @@ export default function MapContainer({
         onUndo={handleUndoPoint}
         onSave={handleSaveBuilding}
         onCancel={handleCancelBuilding}
+        useSatellite={useSatellite}
+        onToggleSatellite={handleToggleSatellite}
       />
 
       {/* Mural Detail Modal */}

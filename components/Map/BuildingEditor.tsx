@@ -1,7 +1,7 @@
 'use client';
 
 import { useState } from 'react';
-import { Building2, Save, X, Undo } from 'lucide-react';
+import { Building2, Save, X, Undo, Map as MapIcon } from 'lucide-react';
 
 interface BuildingEditorProps {
   isActive: boolean;
@@ -10,6 +10,8 @@ interface BuildingEditorProps {
   onUndo: () => void;
   onSave: (height: number) => void;
   onCancel: () => void;
+  useSatellite: boolean;
+  onToggleSatellite: () => void;
 }
 
 export default function BuildingEditor({
@@ -18,7 +20,9 @@ export default function BuildingEditor({
   currentPoints,
   onUndo,
   onSave,
-  onCancel
+  onCancel,
+  useSatellite,
+  onToggleSatellite
 }: BuildingEditorProps) {
   const [height, setHeight] = useState<string>('20');
 
@@ -37,16 +41,30 @@ export default function BuildingEditor({
           <Building2 className="w-5 h-5" />
           Building Editor
         </h3>
-        <button
-          onClick={onToggle}
-          className={`px-3 py-1 rounded text-sm font-medium transition-colors ${
-            isActive
-              ? 'bg-blue-600 text-white hover:bg-blue-700'
-              : 'bg-gray-200 text-gray-700 hover:bg-gray-300'
-          }`}
-        >
-          {isActive ? 'Active' : 'Inactive'}
-        </button>
+        <div className="flex gap-2">
+          <button
+            onClick={onToggleSatellite}
+            className={`px-3 py-1 rounded text-sm font-medium transition-colors flex items-center gap-1 ${
+              useSatellite
+                ? 'bg-green-600 text-white hover:bg-green-700'
+                : 'bg-gray-200 text-gray-700 hover:bg-gray-300'
+            }`}
+            title={useSatellite ? 'Satellite view (for tracing)' : 'Dark view (for 3D)'}
+          >
+            <MapIcon className="w-3 h-3" />
+            {useSatellite ? 'Satellite' : 'Dark'}
+          </button>
+          <button
+            onClick={onToggle}
+            className={`px-3 py-1 rounded text-sm font-medium transition-colors ${
+              isActive
+                ? 'bg-blue-600 text-white hover:bg-blue-700'
+                : 'bg-gray-200 text-gray-700 hover:bg-gray-300'
+            }`}
+          >
+            {isActive ? 'Active' : 'Inactive'}
+          </button>
+        </div>
       </div>
 
       {isActive && (
