@@ -13,7 +13,7 @@
 
 **Build Command:**
 ```
-npm run build
+next build
 ```
 
 **Publish Directory:**
@@ -23,7 +23,7 @@ npm run build
 
 **Node Version:**
 ```
-20.x
+20.18.0
 ```
 
 ---
@@ -63,7 +63,7 @@ Go to **Site settings** → **Build & deploy** → **Build settings**
 
 Set these values:
 - **Base directory:** (leave empty)
-- **Build command:** `npm run build`
+- **Build command:** `next build`
 - **Publish directory:** `.next`
 - **Functions directory:** (leave empty)
 
@@ -85,11 +85,11 @@ Create a file in your repo root called `netlify.toml`:
 
 ```toml
 [build]
-  command = "npm run build"
+  command = "next build"
   publish = ".next"
 
 [build.environment]
-  NODE_VERSION = "20"
+  NODE_VERSION = "20.18.0"
 
 [[redirects]]
   from = "/*"
