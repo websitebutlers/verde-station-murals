@@ -30,7 +30,6 @@ export default function MapContainer({
 }: MapContainerProps) {
   const mapRef = useRef<MapRef>(null);
   const [selectedMural, setSelectedMural] = useState<Mural | null>(null);
-  const [viewState, setViewState] = useState(VERDE_STATION_CENTER);
 
   // Add 3D buildings layer when map loads
   useEffect(() => {
@@ -118,13 +117,13 @@ export default function MapContainer({
     <>
       <Map
         ref={mapRef}
-        {...viewState}
-        onMove={evt => setViewState(evt.viewState)}
+        initialViewState={VERDE_STATION_CENTER}
         mapStyle="mapbox://styles/mapbox/dark-v11"
         mapboxAccessToken={process.env.NEXT_PUBLIC_MAPBOX_TOKEN}
         style={{ width: '100%', height: '100%' }}
         attributionControl={false}
         antialias={true}
+        maxPitch={85}
       >
         {/* Navigation Controls */}
         <NavigationControl position="top-right" />
