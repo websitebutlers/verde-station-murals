@@ -35,6 +35,7 @@ export default function MapContainer({
   const mapRef = useRef<MapRef>(null);
   const [selectedMural, setSelectedMural] = useState<Mural | null>(null);
   const [mapLoaded, setMapLoaded] = useState(false);
+  const [spreadPins, setSpreadPins] = useState(false);
 
   // Building editor state
   const [buildingEditorActive, setBuildingEditorActive] = useState(false);
@@ -213,6 +214,27 @@ export default function MapContainer({
     setUseSatellite(prev => !prev);
   }, []);
 
+  // Spread pins in a grid when they're stacked
+  const getSpreadCoordinates = useCallback((mural: Mural, index: number) => {
+    if (!spreadPins) {
+      return mural.location.coordinates;
+    }
+
+    // Create a grid layout
+    const cols = 6; // 6 columns
+    const row = Math.floor(index / cols);
+    const col = index % cols;
+
+    // Offset from center (in degrees, roughly 0.0001 = ~11 meters)
+    const offsetLat = row * 0.0002;
+    const offsetLng = col * 0.0002;
+
+    return {
+      lat: mural.location.coordinates.lat + offsetLat,
+      lng: mural.location.coordinates.lng + offsetLng
+    };
+  }, [spreadPins]);
+
   return (
     <>
       <Map
@@ -306,16 +328,25 @@ export default function MapContainer({
         )}
 
         {/* Mural Markers - Only render when map is loaded */}
-        {mapLoaded && murals.map((mural) => (
-          <MuralMarker
-            key={mural.id}
-            mural={mural}
-            onClick={handleMarkerClick}
-            onDragEnd={handleMarkerDrag}
-            draggable={adminMode}
-            isSelected={selectedMural?.id === mural.id}
-          />
-        ))}
+        {mapLoaded && murals.map((mural, index) => {
+          const coords = getSpreadCoordinates(mural, index);
+          return (
+            <MuralMarker
+              key={mural.id}
+              mural={{
+                ...mural,
+                location: {
+                  ...mural.location,
+                  coordinates: coords
+                }
+              }}
+              onClick={handleMarkerClick}
+              onDragEnd={handleMarkerDrag}
+              draggable={adminMode}
+              isSelected={selectedMural?.id === mural.id}
+            />
+          );
+        })}
       </Map>
 
       {/* Building Editor UI */}
@@ -329,6 +360,9 @@ export default function MapContainer({
         useSatellite={useSatellite}
         onToggleSatellite={handleToggleSatellite}
         buildings={customBuildings}
+        spreadPins={spreadPins}
+        onToggleSpread={() => setSpreadPins(prev => !prev)}
+        muralCount={murals.length}
       />
 
       {/* Mural Detail Modal */}

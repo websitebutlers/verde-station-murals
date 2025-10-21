@@ -1,7 +1,7 @@
 'use client';
 
 import { useState } from 'react';
-import { Building2, Save, X, Undo, Map as MapIcon, Download } from 'lucide-react';
+import { Building2, Save, X, Undo, Map as MapIcon, Download, Grid3x3 } from 'lucide-react';
 import { CustomBuilding } from '@/types/building';
 
 interface BuildingEditorProps {
@@ -14,6 +14,9 @@ interface BuildingEditorProps {
   useSatellite: boolean;
   onToggleSatellite: () => void;
   buildings: CustomBuilding[];
+  spreadPins: boolean;
+  onToggleSpread: () => void;
+  muralCount: number;
 }
 
 export default function BuildingEditor({
@@ -25,7 +28,10 @@ export default function BuildingEditor({
   onCancel,
   useSatellite,
   onToggleSatellite,
-  buildings
+  buildings,
+  spreadPins,
+  onToggleSpread,
+  muralCount
 }: BuildingEditorProps) {
   const [height, setHeight] = useState<string>('20');
 
@@ -54,9 +60,20 @@ export default function BuildingEditor({
         <h3 className="font-semibold text-gray-900 flex items-center gap-2">
           <Building2 className="w-5 h-5" />
           Building Editor
-          <span className="text-xs text-gray-500">({buildings.length})</span>
+          <span className="text-xs text-gray-500">({buildings.length} buildings, {muralCount} murals)</span>
         </h3>
         <div className="flex gap-2">
+          <button
+            onClick={onToggleSpread}
+            className={`px-2 py-1 rounded text-sm font-medium transition-colors flex items-center gap-1 ${
+              spreadPins
+                ? 'bg-orange-600 text-white hover:bg-orange-700'
+                : 'bg-gray-200 text-gray-700 hover:bg-gray-300'
+            }`}
+            title={spreadPins ? 'Pins spread in grid' : 'Pins stacked (click to spread)'}
+          >
+            <Grid3x3 className="w-3 h-3" />
+          </button>
           <button
             onClick={handleExport}
             disabled={buildings.length === 0}
