@@ -21,8 +21,8 @@ const VERDE_STATION_CENTER = {
   latitude: 33.3062741,
   longitude: -111.7051246,
   zoom: 17.5,
-  pitch: 0, // Flat view for easier tracing
-  bearing: 0 // No rotation
+  pitch: 60, // 3D tilted view
+  bearing: -17.6 // Slight rotation for better perspective
 };
 
 const BUILDINGS_STORAGE_KEY = 'verde-station-custom-buildings';
@@ -41,7 +41,7 @@ export default function MapContainer({
   const [buildingEditorActive, setBuildingEditorActive] = useState(false);
   const [currentBuildingPoints, setCurrentBuildingPoints] = useState<[number, number][]>([]);
   const [customBuildings, setCustomBuildings] = useState<CustomBuilding[]>([]);
-  const [useSatellite, setUseSatellite] = useState(true); // Start with satellite for tracing
+  const [useSatellite, setUseSatellite] = useState(false); // Start with dark mode for 3D view
 
   // Load buildings from API on mount
   useEffect(() => {

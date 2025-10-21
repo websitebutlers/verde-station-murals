@@ -5,8 +5,8 @@
     "location": {
       "building": "Building C - Spot 1",
       "coordinates": {
-        "lat": 33.306274,
-        "lng": -111.705125
+        "lat": 33.30613778258001,
+        "lng": -111.70558357918034
       }
     },
     "artist": {
@@ -22,8 +22,8 @@
     "location": {
       "building": "Building C - Spot 3",
       "coordinates": {
-        "lat": 33.306274,
-        "lng": -111.705125
+        "lat": 33.30582710487164,
+        "lng": -111.70568978923862
       }
     },
     "artist": {
@@ -39,8 +39,8 @@
     "location": {
       "building": "Building B1 - Spot 5",
       "coordinates": {
-        "lat": 33.306274,
-        "lng": -111.705125
+        "lat": 33.306844728750974,
+        "lng": -111.70569358245531
       }
     },
     "artist": {
@@ -56,8 +56,8 @@
     "location": {
       "building": "Building B2 - Spot 5",
       "coordinates": {
-        "lat": 33.306274,
-        "lng": -111.705125
+        "lat": 33.30633750337955,
+        "lng": -111.70567840958945
       }
     },
     "artist": {
@@ -73,8 +73,8 @@
     "location": {
       "building": "Building J - Spot 1",
       "coordinates": {
-        "lat": 33.306274,
-        "lng": -111.705125
+        "lat": 33.305747850177426,
+        "lng": -111.70501838994191
       }
     },
     "artist": {
@@ -90,8 +90,8 @@
     "location": {
       "building": "Building F - Spot 1",
       "coordinates": {
-        "lat": 33.306274,
-        "lng": -111.705125
+        "lat": 33.30673694360634,
+        "lng": -111.70465803438712
       }
     },
     "artist": {
@@ -107,8 +107,8 @@
     "location": {
       "building": "Green",
       "coordinates": {
-        "lat": 33.306274,
-        "lng": -111.705125
+        "lat": 33.306385055883354,
+        "lng": -111.70494252561446
       }
     },
     "artist": {
@@ -124,8 +124,8 @@
     "location": {
       "building": "Building F - Spot 1",
       "coordinates": {
-        "lat": 33.306274,
-        "lng": -111.705125
+        "lat": 33.30680034664876,
+        "lng": -111.70461251579093
       }
     },
     "artist": {
@@ -141,8 +141,8 @@
     "location": {
       "building": "Building E - Spot 1",
       "coordinates": {
-        "lat": 33.306274,
-        "lng": -111.705125
+        "lat": 33.306844728750974,
+        "lng": -111.70520805076015
       }
     },
     "artist": {
@@ -158,8 +158,8 @@
     "location": {
       "building": "Building H/I - Spot 2",
       "coordinates": {
-        "lat": 33.306274,
-        "lng": -111.705125
+        "lat": 33.306194845712625,
+        "lng": -111.70469217333464
       }
     },
     "artist": {
@@ -175,8 +175,8 @@
     "location": {
       "building": "Building F - Spot 4",
       "coordinates": {
-        "lat": 33.306274,
-        "lng": -111.705125
+        "lat": 33.30685423919819,
+        "lng": -111.70414215696164
       }
     },
     "artist": {
@@ -192,8 +192,8 @@
     "location": {
       "building": "Building J - Spot 1",
       "coordinates": {
-        "lat": 33.306274,
-        "lng": -111.705125
+        "lat": 33.30579223281529,
+        "lng": -111.70506390853859
       }
     },
     "artist": {
@@ -209,8 +209,8 @@
     "location": {
       "building": "Building C - Spot 3",
       "coordinates": {
-        "lat": 33.306274,
-        "lng": -111.705125
+        "lat": 33.30589050857557,
+        "lng": -111.70579599929691
       }
     },
     "artist": {
@@ -226,8 +226,8 @@
     "location": {
       "building": "Building B2 - Spot 1",
       "coordinates": {
-        "lat": 33.306274,
-        "lng": -111.705125
+        "lat": 33.30660379706738,
+        "lng": -111.70556461309872
       }
     },
     "artist": {
@@ -243,8 +243,8 @@
     "location": {
       "building": "Building G - Spot 1",
       "coordinates": {
-        "lat": 33.306274,
-        "lng": -111.705125
+        "lat": 33.3064643099992,
+        "lng": -111.70459734292552
       }
     },
     "artist": {
@@ -260,8 +260,8 @@
     "location": {
       "building": "Building J - Spot 4",
       "coordinates": {
-        "lat": 33.306274,
-        "lng": -111.705125
+        "lat": 33.305424490276465,
+        "lng": -111.70546598947338
       }
     },
     "artist": {
@@ -277,8 +277,8 @@
     "location": {
       "building": "Building B2 - Spot 3",
       "coordinates": {
-        "lat": 33.306274,
-        "lng": -111.705125
+        "lat": 33.30647065032511,
+        "lng": -111.70561771812785
       }
     },
     "artist": {
@@ -294,8 +294,8 @@
     "location": {
       "building": "Building H/I - Spot 1",
       "coordinates": {
-        "lat": 33.306274,
-        "lng": -111.705125
+        "lat": 33.306280440341084,
+        "lng": -111.70459734292552
       }
     },
     "artist": {
@@ -311,8 +311,8 @@
     "location": {
       "building": "Building E - Spot 3",
       "coordinates": {
-        "lat": 33.306274,
-        "lng": -111.705125
+        "lat": 33.30680034664876,
+        "lng": -111.70501459672569
       }
     },
     "artist": {
@@ -328,8 +328,8 @@
     "location": {
       "building": "Building E - Spot 2",
       "coordinates": {
-        "lat": 33.306274,
-        "lng": -111.705125
+        "lat": 33.30687008994197,
+        "lng": -111.7051094271348
       }
     },
     "artist": {
@@ -345,8 +345,8 @@
     "location": {
       "building": "Building K - Spot 3",
       "coordinates": {
-        "lat": 33.306274,
-        "lng": -111.705125
+        "lat": 33.30543083067876,
+        "lng": -111.70409663836494
       }
     },
     "artist": {
@@ -362,8 +362,8 @@
     "location": {
       "building": "Building D - Spot 1",
       "coordinates": {
-        "lat": 33.306274,
-        "lng": -111.705125
+        "lat": 33.305709807898154,
+        "lng": -111.70583393146063
       }
     },
     "artist": {
@@ -374,4 +374,3 @@
     "buildingCode": "1M"
   }
 ]
-
