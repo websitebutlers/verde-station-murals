@@ -41,26 +41,45 @@ export default function MapContainer({
   const [customBuildings, setCustomBuildings] = useState<CustomBuilding[]>([]);
   const [useSatellite, setUseSatellite] = useState(true); // Start with satellite for tracing
 
-  // Load buildings from localStorage on mount
+  // Load buildings from API on mount
   useEffect(() => {
-    const stored = localStorage.getItem(BUILDINGS_STORAGE_KEY);
-    if (stored) {
+    const loadBuildings = async () => {
       try {
-        const buildings = JSON.parse(stored);
-        setCustomBuildings(buildings);
-        console.log('Loaded buildings from localStorage:', buildings);
+        const response = await fetch('/api/buildings');
+        if (response.ok) {
+          const buildings = await response.json();
+          setCustomBuildings(buildings);
+          console.log('Loaded buildings from file:', buildings);
+        }
       } catch (error) {
-        console.error('Error loading buildings from localStorage:', error);
+        console.error('Error loading buildings:', error);
       }
-    }
+    };
+    loadBuildings();
   }, []);
 
-  // Save buildings to localStorage whenever they change
+  // Save buildings to API whenever they change
   useEffect(() => {
-    if (customBuildings.length > 0) {
-      localStorage.setItem(BUILDINGS_STORAGE_KEY, JSON.stringify(customBuildings));
-      console.log('Saved buildings to localStorage:', customBuildings);
-    }
+    const saveBuildings = async () => {
+      if (customBuildings.length === 0) return;
+
+      try {
+        const response = await fetch('/api/buildings', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(customBuildings)
+        });
+
+        if (response.ok) {
+          const result = await response.json();
+          console.log('Saved buildings to file:', result);
+        }
+      } catch (error) {
+        console.error('Error saving buildings:', error);
+      }
+    };
+
+    saveBuildings();
   }, [customBuildings]);
 
   // Add 3D buildings layer when map loads
@@ -307,6 +326,7 @@ export default function MapContainer({
         onCancel={handleCancelBuilding}
         useSatellite={useSatellite}
         onToggleSatellite={handleToggleSatellite}
+        buildings={customBuildings}
       />
 
       {/* Mural Detail Modal */}

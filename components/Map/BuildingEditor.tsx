@@ -1,7 +1,8 @@
 'use client';
 
 import { useState } from 'react';
-import { Building2, Save, X, Undo, Map as MapIcon } from 'lucide-react';
+import { Building2, Save, X, Undo, Map as MapIcon, Download } from 'lucide-react';
+import { CustomBuilding } from '@/types/building';
 
 interface BuildingEditorProps {
   isActive: boolean;
@@ -12,6 +13,7 @@ interface BuildingEditorProps {
   onCancel: () => void;
   useSatellite: boolean;
   onToggleSatellite: () => void;
+  buildings: CustomBuilding[];
 }
 
 export default function BuildingEditor({
@@ -22,9 +24,21 @@ export default function BuildingEditor({
   onSave,
   onCancel,
   useSatellite,
-  onToggleSatellite
+  onToggleSatellite,
+  buildings
 }: BuildingEditorProps) {
   const [height, setHeight] = useState<string>('20');
+
+  const handleExport = () => {
+    const dataStr = JSON.stringify(buildings, null, 2);
+    const dataBlob = new Blob([dataStr], { type: 'application/json' });
+    const url = URL.createObjectURL(dataBlob);
+    const link = document.createElement('a');
+    link.href = url;
+    link.download = `verde-station-buildings-${new Date().toISOString().split('T')[0]}.json`;
+    link.click();
+    URL.revokeObjectURL(url);
+  };
 
   const handleSave = () => {
     const heightNum = parseFloat(height);
@@ -40,8 +54,17 @@ export default function BuildingEditor({
         <h3 className="font-semibold text-gray-900 flex items-center gap-2">
           <Building2 className="w-5 h-5" />
           Building Editor
+          <span className="text-xs text-gray-500">({buildings.length})</span>
         </h3>
         <div className="flex gap-2">
+          <button
+            onClick={handleExport}
+            disabled={buildings.length === 0}
+            className="px-2 py-1 rounded text-sm font-medium transition-colors flex items-center gap-1 bg-purple-600 text-white hover:bg-purple-700 disabled:opacity-50 disabled:cursor-not-allowed"
+            title="Export buildings to JSON file"
+          >
+            <Download className="w-3 h-3" />
+          </button>
           <button
             onClick={onToggleSatellite}
             className={`px-3 py-1 rounded text-sm font-medium transition-colors flex items-center gap-1 ${
