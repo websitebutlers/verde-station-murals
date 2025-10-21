@@ -1,7 +1,7 @@
 'use client';
 
 import { useState, useCallback, useRef, useEffect } from 'react';
-import Map, { Marker, NavigationControl, GeolocateControl, Source, Layer } from 'react-map-gl/mapbox';
+import Map, { NavigationControl, GeolocateControl, Source, Layer } from 'react-map-gl/mapbox';
 import type { MapRef, MarkerDragEvent, MapLayerMouseEvent } from 'react-map-gl/mapbox';
 import type { AnyLayer } from 'mapbox-gl';
 import 'mapbox-gl/dist/mapbox-gl.css';
@@ -28,8 +28,6 @@ const VERDE_STATION_CENTER = {
   pitch: 30, // Reduced 3D tilt (50% of previous 60 degrees)
   bearing: -17.6 // Slight rotation for better perspective
 };
-
-const BUILDINGS_STORAGE_KEY = 'verde-station-custom-buildings';
 
 export default function MapContainer({
   murals,

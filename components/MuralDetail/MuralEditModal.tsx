@@ -171,6 +171,7 @@ export default function MuralEditModal({ mural, isOpen, onClose, onSave }: Mural
                   {/* Image Preview */}
                   {image.url && (
                     <div className="mt-3">
+                      {/* eslint-disable-next-line @next/next/no-img-element */}
                       <img
                         src={image.url}
                         alt={image.description || 'Preview'}
@@ -186,7 +187,7 @@ export default function MuralEditModal({ mural, isOpen, onClose, onSave }: Mural
 
               {images.length === 0 && (
                 <div className="text-center py-8 text-gray-500 text-sm">
-                  No images added yet. Click "Add Image" to get started.
+                  No images added yet. Click &quot;Add Image&quot; to get started.
                 </div>
               )}
             </div>
