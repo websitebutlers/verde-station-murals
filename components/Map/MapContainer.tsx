@@ -19,8 +19,8 @@ const VERDE_STATION_CENTER = {
   latitude: 33.3062741,
   longitude: -111.7051246,
   zoom: 17.5,
-  pitch: 45, // Tilt the map to see 3D buildings
-  bearing: 0
+  pitch: 60, // Tilt the map to see 3D buildings (60 degrees for dramatic effect)
+  bearing: -17.6 // Slight rotation for better building perspective
 };
 
 export default function MapContainer({
@@ -124,6 +124,7 @@ export default function MapContainer({
         mapboxAccessToken={process.env.NEXT_PUBLIC_MAPBOX_TOKEN}
         style={{ width: '100%', height: '100%' }}
         attributionControl={false}
+        antialias={true}
       >
         {/* Navigation Controls */}
         <NavigationControl position="top-right" />
