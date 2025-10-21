@@ -352,12 +352,15 @@ export default function MapContainer({
                 {
                   type: 'Feature',
                   properties: {},
-                  geometry: {
-                    type: currentBuildingPoints.length > 2 ? 'Polygon' : 'LineString',
-                    coordinates: currentBuildingPoints.length > 2
-                      ? [[...currentBuildingPoints, currentBuildingPoints[0]]]
-                      : currentBuildingPoints
-                  }
+                  geometry: currentBuildingPoints.length > 2
+                    ? {
+                        type: 'Polygon' as const,
+                        coordinates: [[...currentBuildingPoints, currentBuildingPoints[0]]]
+                      }
+                    : {
+                        type: 'LineString' as const,
+                        coordinates: currentBuildingPoints
+                      }
                 }
               ]
             }}
