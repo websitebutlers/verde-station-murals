@@ -34,6 +34,7 @@ export default function MapContainer({
 }: MapContainerProps) {
   const mapRef = useRef<MapRef>(null);
   const [selectedMural, setSelectedMural] = useState<Mural | null>(null);
+  const [mapLoaded, setMapLoaded] = useState(false);
 
   // Building editor state
   const [buildingEditorActive, setBuildingEditorActive] = useState(false);
@@ -87,6 +88,7 @@ export default function MapContainer({
     if (!mapRef.current) return;
 
     const map = mapRef.current.getMap();
+    setMapLoaded(true); // Mark map as loaded
     console.log('🏗️ Map loaded via onLoad callback!');
     console.log('🔍 Current zoom level:', map.getZoom());
     console.log('📐 Current pitch:', map.getPitch());
@@ -303,8 +305,8 @@ export default function MapContainer({
           </Source>
         )}
 
-        {/* Mural Markers */}
-        {murals.map((mural) => (
+        {/* Mural Markers - Only render when map is loaded */}
+        {mapLoaded && murals.map((mural) => (
           <MuralMarker
             key={mural.id}
             mural={mural}
