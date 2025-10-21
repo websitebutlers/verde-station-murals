@@ -21,7 +21,7 @@ const VERDE_STATION_CENTER = {
   latitude: 33.3062741,
   longitude: -111.7051246,
   zoom: 17.5,
-  pitch: 60, // 3D tilted view
+  pitch: 30, // Reduced 3D tilt (50% of previous 60 degrees)
   bearing: -17.6 // Slight rotation for better perspective
 };
 
