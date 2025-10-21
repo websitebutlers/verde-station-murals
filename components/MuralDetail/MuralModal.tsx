@@ -1,6 +1,6 @@
 'use client';
 
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Mural } from '@/types/mural';
 import Image from 'next/image';
@@ -11,17 +11,29 @@ interface MuralModalProps {
 }
 
 export default function MuralModal({ mural, onClose }: MuralModalProps) {
-  // Close on Escape key
+  const [currentImageIndex, setCurrentImageIndex] = useState(0);
+
+  // Get images array, fallback to legacy single image
+  const images = mural.images && mural.images.length > 0
+    ? mural.images
+    : [{ url: mural.image, description: mural.name, isPrimary: true }];
+
+  const hasMultipleImages = images.length > 1;
+  // Handle keyboard navigation
   useEffect(() => {
-    const handleEscape = (e: KeyboardEvent) => {
+    const handleKeyDown = (e: KeyboardEvent) => {
       if (e.key === 'Escape') {
         onClose();
+      } else if (e.key === 'ArrowLeft' && hasMultipleImages) {
+        setCurrentImageIndex((prev) => (prev === 0 ? images.length - 1 : prev - 1));
+      } else if (e.key === 'ArrowRight' && hasMultipleImages) {
+        setCurrentImageIndex((prev) => (prev === images.length - 1 ? 0 : prev + 1));
       }
     };
 
-    window.addEventListener('keydown', handleEscape);
-    return () => window.removeEventListener('keydown', handleEscape);
-  }, [onClose]);
+    window.addEventListener('keydown', handleKeyDown);
+    return () => window.removeEventListener('keydown', handleKeyDown);
+  }, [onClose, hasMultipleImages, images.length]);
 
   // Prevent body scroll when modal is open
   useEffect(() => {
@@ -72,16 +84,83 @@ export default function MuralModal({ mural, onClose }: MuralModalProps) {
 
           {/* Scrollable Content */}
           <div className="overflow-y-auto max-h-[90vh]">
-            {/* Mural Image */}
-            <div className="relative w-full h-96 bg-gray-100">
+            {/* Image Slider */}
+            <div className="relative w-full h-96 bg-gray-100 group">
               <Image
-                src={mural.image}
-                alt={mural.name}
+                src={images[currentImageIndex].url}
+                alt={images[currentImageIndex].description || mural.name}
                 fill
                 className="object-cover"
                 sizes="(max-width: 768px) 100vw, (max-width: 1200px) 80vw, 1200px"
                 priority
               />
+
+              {/* Previous Button */}
+              {hasMultipleImages && (
+                <button
+                  onClick={() => setCurrentImageIndex((prev) => (prev === 0 ? images.length - 1 : prev - 1))}
+                  className="absolute left-4 top-1/2 -translate-y-1/2 w-10 h-10 flex items-center justify-center bg-white/90 hover:bg-white rounded-full shadow-lg transition-all duration-200 opacity-0 group-hover:opacity-100"
+                  aria-label="Previous image"
+                >
+                  <svg
+                    className="w-6 h-6 text-gray-700"
+                    fill="none"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth="2"
+                    viewBox="0 0 24 24"
+                    stroke="currentColor"
+                  >
+                    <path d="M15 19l-7-7 7-7" />
+                  </svg>
+                </button>
+              )}
+
+              {/* Next Button */}
+              {hasMultipleImages && (
+                <button
+                  onClick={() => setCurrentImageIndex((prev) => (prev === images.length - 1 ? 0 : prev + 1))}
+                  className="absolute right-4 top-1/2 -translate-y-1/2 w-10 h-10 flex items-center justify-center bg-white/90 hover:bg-white rounded-full shadow-lg transition-all duration-200 opacity-0 group-hover:opacity-100"
+                  aria-label="Next image"
+                >
+                  <svg
+                    className="w-6 h-6 text-gray-700"
+                    fill="none"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth="2"
+                    viewBox="0 0 24 24"
+                    stroke="currentColor"
+                  >
+                    <path d="M9 5l7 7-7 7" />
+                  </svg>
+                </button>
+              )}
+
+              {/* Image Counter */}
+              {hasMultipleImages && (
+                <div className="absolute bottom-4 left-1/2 -translate-x-1/2 px-3 py-1 bg-black/60 text-white rounded-full text-sm font-medium">
+                  {currentImageIndex + 1} / {images.length}
+                </div>
+              )}
+
+              {/* Dot Indicators */}
+              {hasMultipleImages && (
+                <div className="absolute bottom-4 right-4 flex gap-2">
+                  {images.map((_, index) => (
+                    <button
+                      key={index}
+                      onClick={() => setCurrentImageIndex(index)}
+                      className={`w-2 h-2 rounded-full transition-all duration-200 ${
+                        index === currentImageIndex
+                          ? 'bg-white w-6'
+                          : 'bg-white/50 hover:bg-white/75'
+                      }`}
+                      aria-label={`Go to image ${index + 1}`}
+                    />
+                  ))}
+                </div>
+              )}
             </div>
 
             {/* Mural Details */}

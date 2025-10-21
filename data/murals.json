@@ -82,7 +82,14 @@
       "socialMedia": ""
     },
     "image": "/murals/cardinal.jpg",
-    "buildingCode": "10M"
+    "buildingCode": "10M",
+    "images": [
+      {
+        "url": "/assets/cardinal/IMG_4678.jpg",
+        "description": "Cardinal - Image 1",
+        "isPrimary": true
+      }
+    ]
   },
   {
     "id": "concrete-face",

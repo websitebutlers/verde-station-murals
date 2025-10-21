@@ -88,7 +88,7 @@ export default function MuralEditModal({ mural, isOpen, onClose, onSave }: Mural
               value={artistBio}
               onChange={(e) => setArtistBio(e.target.value)}
               placeholder="Enter artist biography..."
-              className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent resize-none"
+              className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent resize-none text-gray-900"
               rows={4}
             />
           </div>
@@ -124,7 +124,7 @@ export default function MuralEditModal({ mural, isOpen, onClose, onSave }: Mural
                           value={image.url}
                           onChange={(e) => handleImageChange(index, 'url', e.target.value)}
                           placeholder="https://yourwebsite.com/image.jpg"
-                          className="w-full px-3 py-2 border border-gray-300 rounded-lg text-sm focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                          className="w-full px-3 py-2 border border-gray-300 rounded-lg text-sm focus:ring-2 focus:ring-blue-500 focus:border-transparent text-gray-900"
                         />
                       </div>
 
@@ -138,7 +138,7 @@ export default function MuralEditModal({ mural, isOpen, onClose, onSave }: Mural
                           value={image.description}
                           onChange={(e) => handleImageChange(index, 'description', e.target.value)}
                           placeholder="Describe this image..."
-                          className="w-full px-3 py-2 border border-gray-300 rounded-lg text-sm focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                          className="w-full px-3 py-2 border border-gray-300 rounded-lg text-sm focus:ring-2 focus:ring-blue-500 focus:border-transparent text-gray-900"
                         />
                       </div>
 

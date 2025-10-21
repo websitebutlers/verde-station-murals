@@ -11,12 +11,14 @@ import MuralMarker from './MuralMarker';
 import MuralModal from '../MuralDetail/MuralModal';
 import MuralEditModal from '../MuralDetail/MuralEditModal';
 import BuildingEditor from './BuildingEditor';
+import MuralLegend from './MuralLegend';
 
 interface MapContainerProps {
   murals: Mural[];
   adminMode?: boolean;
   onCoordinatesUpdate?: (muralId: string, lat: number, lng: number) => void;
   onMuralUpdate?: (updatedMural: Mural) => void;
+  hideControls?: boolean;
 }
 
 const VERDE_STATION_CENTER = {
@@ -33,7 +35,8 @@ export default function MapContainer({
   murals,
   adminMode = false,
   onCoordinatesUpdate,
-  onMuralUpdate
+  onMuralUpdate,
+  hideControls = false
 }: MapContainerProps) {
   const mapRef = useRef<MapRef>(null);
   const [selectedMural, setSelectedMural] = useState<Mural | null>(null);
@@ -181,6 +184,25 @@ export default function MapContainer({
     }
   }, [adminMode]);
 
+  const handleLegendMuralSelect = useCallback((mural: Mural) => {
+    // Zoom to the mural location
+    if (mapRef.current) {
+      mapRef.current.flyTo({
+        center: [mural.location.coordinates.lng, mural.location.coordinates.lat],
+        zoom: 19,
+        duration: 1500,
+        essential: true
+      });
+    }
+
+    // Select the mural (open modal in non-admin mode)
+    if (adminMode) {
+      setEditingMural(mural);
+    } else {
+      setSelectedMural(mural);
+    }
+  }, [adminMode]);
+
   const handleMarkerDrag = useCallback((muralId: string, event: MarkerDragEvent) => {
     if (adminMode && onCoordinatesUpdate) {
       const { lng, lat } = event.lngLat;
@@ -261,6 +283,15 @@ export default function MapContainer({
 
   return (
     <>
+      {/* Mural Legend - Only show in non-admin mode */}
+      {!adminMode && (
+        <MuralLegend
+          murals={murals}
+          onMuralSelect={handleLegendMuralSelect}
+          selectedMuralId={selectedMural?.id}
+        />
+      )}
+
       <Map
         ref={mapRef}
         initialViewState={VERDE_STATION_CENTER}
@@ -373,21 +404,23 @@ export default function MapContainer({
         })}
       </Map>
 
-      {/* Building Editor UI */}
-      <BuildingEditor
-        isActive={buildingEditorActive}
-        onToggle={handleToggleEditor}
-        currentPoints={currentBuildingPoints}
-        onUndo={handleUndoPoint}
-        onSave={handleSaveBuilding}
-        onCancel={handleCancelBuilding}
-        useSatellite={useSatellite}
-        onToggleSatellite={handleToggleSatellite}
-        buildings={customBuildings}
-        spreadPins={spreadPins}
-        onToggleSpread={() => setSpreadPins(prev => !prev)}
-        muralCount={murals.length}
-      />
+      {/* Building Editor UI - Hidden when hideControls is true */}
+      {!hideControls && (
+        <BuildingEditor
+          isActive={buildingEditorActive}
+          onToggle={handleToggleEditor}
+          currentPoints={currentBuildingPoints}
+          onUndo={handleUndoPoint}
+          onSave={handleSaveBuilding}
+          onCancel={handleCancelBuilding}
+          useSatellite={useSatellite}
+          onToggleSatellite={handleToggleSatellite}
+          buildings={customBuildings}
+          spreadPins={spreadPins}
+          onToggleSpread={() => setSpreadPins(prev => !prev)}
+          muralCount={murals.length}
+        />
+      )}
 
       {/* Mural Detail Modal (View Mode) */}
       {selectedMural && !adminMode && (

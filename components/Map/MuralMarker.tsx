@@ -3,6 +3,7 @@
 import { Marker } from 'react-map-gl/mapbox';
 import type { MarkerDragEvent } from 'react-map-gl/mapbox';
 import { Mural } from '@/types/mural';
+import Image from 'next/image';
 
 interface MuralMarkerProps {
   mural: Mural;
@@ -29,6 +30,11 @@ export default function MuralMarker({
     }
   };
 
+  // Get the first image from the images array, or fallback to legacy image
+  const thumbnailUrl = mural.images && mural.images.length > 0
+    ? mural.images[0].url
+    : mural.image;
+
   return (
     <Marker
       longitude={mural.location.coordinates.lng}
@@ -45,39 +51,49 @@ export default function MuralMarker({
         `}
       >
         <svg
-          width="40"
-          height="50"
-          viewBox="0 0 40 50"
+          width="50"
+          height="60"
+          viewBox="0 0 50 60"
           fill="none"
           xmlns="http://www.w3.org/2000/svg"
           className="drop-shadow-lg"
         >
           {/* Pin Shape */}
           <path
-            d="M20 0C9 0 0 9 0 20C0 35 20 50 20 50C20 50 40 35 40 20C40 9 31 0 20 0Z"
+            d="M25 0C13 0 3 10 3 22C3 38 25 60 25 60C25 60 47 38 47 22C47 10 37 0 25 0Z"
             fill={isSelected ? '#10B981' : '#F59E0B'}
             className="transition-colors duration-200"
           />
-          {/* Inner Circle */}
+
+          {/* Clip path for circular image */}
+          <defs>
+            <clipPath id={`clip-${mural.id}`}>
+              <circle cx="25" cy="22" r="13" />
+            </clipPath>
+          </defs>
+
+          {/* White background circle */}
           <circle
-            cx="20"
-            cy="20"
-            r="8"
+            cx="25"
+            cy="22"
+            r="14"
             fill="white"
             className="transition-all duration-200"
           />
-          {/* Building Code Text */}
-          <text
-            x="20"
-            y="24"
-            textAnchor="middle"
-            fontSize="8"
-            fontWeight="bold"
-            fill={isSelected ? '#10B981' : '#F59E0B'}
-            className="select-none"
-          >
-            {mural.buildingCode}
-          </text>
+
+          {/* Image */}
+          <foreignObject x="12" y="9" width="26" height="26" clipPath={`url(#clip-${mural.id})`}>
+            <div className="w-full h-full">
+              <Image
+                src={thumbnailUrl}
+                alt={mural.name}
+                width={26}
+                height={26}
+                className="object-cover w-full h-full"
+                unoptimized
+              />
+            </div>
+          </foreignObject>
         </svg>
       </div>
     </Marker>
