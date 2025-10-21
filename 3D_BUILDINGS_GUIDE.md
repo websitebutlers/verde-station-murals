@@ -28,8 +28,10 @@ Your Verde Station Murals map now has **3D building extrusions** with a **dark t
 - **Better contrast**: Markers pop against the dark map
 
 ### Camera Angle
-- **45-degree pitch**: Map is tilted to showcase 3D buildings
+- **60-degree pitch**: Map is tilted dramatically to showcase 3D buildings with depth
+- **-17.6 degree bearing**: Slight rotation for optimal building perspective
 - **Optimal zoom**: Set to 17.5 for perfect view of Verde Station
+- **Antialiasing enabled**: Smooth edges on 3D buildings for professional appearance
 - **Smooth rotation**: You can rotate the map to see buildings from different angles
 
 ## How to Use
@@ -80,8 +82,9 @@ Your Verde Station Murals map now has **3D building extrusions** with a **dark t
   latitude: 33.3062741,
   longitude: -111.7051246,
   zoom: 17.5,
-  pitch: 45,  // 45-degree tilt
-  bearing: 0  // North-facing
+  pitch: 60,      // 60-degree tilt for dramatic 3D effect
+  bearing: -17.6, // Slight rotation for better building perspective
+  antialias: true // Smooth edges on 3D buildings
 }
 ```
 
@@ -112,8 +115,10 @@ Make buildings more or less transparent:
 ### Change Pitch (Tilt Angle)
 Adjust the initial tilt in `VERDE_STATION_CENTER`:
 ```javascript
-pitch: 60  // More tilted (bird's eye view)
-pitch: 30  // Less tilted (closer to flat)
+pitch: 60  // Current setting - dramatic 3D view
+pitch: 75  // More tilted (extreme bird's eye view)
+pitch: 45  // Less tilted (moderate 3D view)
+pitch: 30  // Subtle tilt
 pitch: 0   // Completely flat (2D view)
 ```
 
