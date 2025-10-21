@@ -1,13 +1,15 @@
 'use client';
 
 import { useState, useCallback, useRef, useEffect } from 'react';
-import Map, { Marker, NavigationControl, GeolocateControl } from 'react-map-gl/mapbox';
-import type { MapRef, MarkerDragEvent } from 'react-map-gl/mapbox';
+import Map, { Marker, NavigationControl, GeolocateControl, Source, Layer } from 'react-map-gl/mapbox';
+import type { MapRef, MarkerDragEvent, MapLayerMouseEvent } from 'react-map-gl/mapbox';
 import type { AnyLayer } from 'mapbox-gl';
 import 'mapbox-gl/dist/mapbox-gl.css';
 import { Mural } from '@/types/mural';
+import { CustomBuilding } from '@/types/building';
 import MuralMarker from './MuralMarker';
 import MuralModal from '../MuralDetail/MuralModal';
+import BuildingEditor from './BuildingEditor';
 
 interface MapContainerProps {
   murals: Mural[];
@@ -30,6 +32,11 @@ export default function MapContainer({
 }: MapContainerProps) {
   const mapRef = useRef<MapRef>(null);
   const [selectedMural, setSelectedMural] = useState<Mural | null>(null);
+
+  // Building editor state
+  const [buildingEditorActive, setBuildingEditorActive] = useState(false);
+  const [currentBuildingPoints, setCurrentBuildingPoints] = useState<[number, number][]>([]);
+  const [customBuildings, setCustomBuildings] = useState<CustomBuilding[]>([]);
 
   // Add 3D buildings layer when map loads
   const handleMapLoad = useCallback(() => {
@@ -121,22 +128,132 @@ export default function MapContainer({
     setSelectedMural(null);
   }, []);
 
+  // Building editor handlers
+  const handleMapClick = useCallback((event: MapLayerMouseEvent) => {
+    if (!buildingEditorActive) return;
+
+    const { lng, lat } = event.lngLat;
+    setCurrentBuildingPoints(prev => [...prev, [lng, lat]]);
+  }, [buildingEditorActive]);
+
+  const handleUndoPoint = useCallback(() => {
+    setCurrentBuildingPoints(prev => prev.slice(0, -1));
+  }, []);
+
+  const handleSaveBuilding = useCallback((height: number) => {
+    if (currentBuildingPoints.length < 3) return;
+
+    const newBuilding: CustomBuilding = {
+      id: `building-${Date.now()}`,
+      coordinates: currentBuildingPoints,
+      height
+    };
+
+    setCustomBuildings(prev => [...prev, newBuilding]);
+    setCurrentBuildingPoints([]);
+    console.log('Saved building:', newBuilding);
+  }, [currentBuildingPoints]);
+
+  const handleCancelBuilding = useCallback(() => {
+    setCurrentBuildingPoints([]);
+  }, []);
+
+  const handleToggleEditor = useCallback(() => {
+    setBuildingEditorActive(prev => !prev);
+    setCurrentBuildingPoints([]);
+  }, []);
+
   return (
     <>
       <Map
         ref={mapRef}
         initialViewState={VERDE_STATION_CENTER}
         onLoad={handleMapLoad}
+        onClick={handleMapClick}
         mapStyle="mapbox://styles/mapbox/dark-v11"
         mapboxAccessToken={process.env.NEXT_PUBLIC_MAPBOX_TOKEN}
         style={{ width: '100%', height: '100%' }}
         attributionControl={false}
         antialias={true}
         maxPitch={85}
+        interactiveLayerIds={buildingEditorActive ? [] : undefined}
       >
         {/* Navigation Controls */}
         <NavigationControl position="top-right" />
         <GeolocateControl position="top-right" />
+
+        {/* Custom 3D Buildings */}
+        {customBuildings.length > 0 && (
+          <Source
+            id="custom-buildings"
+            type="geojson"
+            data={{
+              type: 'FeatureCollection',
+              features: customBuildings.map(building => ({
+                type: 'Feature',
+                properties: {
+                  height: building.height,
+                  base_height: 0
+                },
+                geometry: {
+                  type: 'Polygon',
+                  coordinates: [[...building.coordinates, building.coordinates[0]]] // Close the polygon
+                }
+              }))
+            }}
+          >
+            <Layer
+              id="custom-buildings-3d"
+              type="fill-extrusion"
+              paint={{
+                'fill-extrusion-color': '#F59E0B', // Amber color to match markers
+                'fill-extrusion-height': ['get', 'height'],
+                'fill-extrusion-base': ['get', 'base_height'],
+                'fill-extrusion-opacity': 0.9,
+                'fill-extrusion-vertical-gradient': true
+              }}
+            />
+          </Source>
+        )}
+
+        {/* Current building being traced */}
+        {buildingEditorActive && currentBuildingPoints.length > 0 && (
+          <Source
+            id="current-building"
+            type="geojson"
+            data={{
+              type: 'FeatureCollection',
+              features: [
+                {
+                  type: 'Feature',
+                  properties: {},
+                  geometry: {
+                    type: currentBuildingPoints.length > 2 ? 'Polygon' : 'LineString',
+                    coordinates: currentBuildingPoints.length > 2
+                      ? [[...currentBuildingPoints, currentBuildingPoints[0]]]
+                      : currentBuildingPoints
+                  }
+                }
+              ]
+            }}
+          >
+            <Layer
+              id="current-building-outline"
+              type={currentBuildingPoints.length > 2 ? 'fill' : 'line'}
+              paint={
+                currentBuildingPoints.length > 2
+                  ? {
+                      'fill-color': '#3B82F6',
+                      'fill-opacity': 0.3
+                    }
+                  : {
+                      'line-color': '#3B82F6',
+                      'line-width': 2
+                    }
+              }
+            />
+          </Source>
+        )}
 
         {/* Mural Markers */}
         {murals.map((mural) => (
@@ -150,6 +267,16 @@ export default function MapContainer({
           />
         ))}
       </Map>
+
+      {/* Building Editor UI */}
+      <BuildingEditor
+        isActive={buildingEditorActive}
+        onToggle={handleToggleEditor}
+        currentPoints={currentBuildingPoints}
+        onUndo={handleUndoPoint}
+        onSave={handleSaveBuilding}
+        onCancel={handleCancelBuilding}
+      />
 
       {/* Mural Detail Modal */}
       {selectedMural && (
