@@ -1,8 +1,7 @@
 'use client';
 
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import dynamic from 'next/dynamic';
-import muralsData from '@/data/murals.json';
 import { Mural } from '@/types/mural';
 
 // Dynamically import MapContainer to avoid SSR issues with Mapbox
@@ -20,9 +19,30 @@ const MapContainer = dynamic(() => import('@/components/Map/MapContainer'), {
 
 export default function Home() {
   const [adminMode, setAdminMode] = useState(false);
-  const [murals, setMurals] = useState<Mural[]>(muralsData as Mural[]);
+  const [murals, setMurals] = useState<Mural[]>([]);
+  const [loading, setLoading] = useState(true);
 
-  const handleCoordinatesUpdate = (muralId: string, lat: number, lng: number) => {
+  // Load murals from API on mount
+  useEffect(() => {
+    const loadMurals = async () => {
+      try {
+        const response = await fetch('/api/murals');
+        if (response.ok) {
+          const data = await response.json();
+          setMurals(data);
+          console.log('Loaded murals from file:', data.length);
+        }
+      } catch (error) {
+        console.error('Error loading murals:', error);
+      } finally {
+        setLoading(false);
+      }
+    };
+    loadMurals();
+  }, []);
+
+  const handleCoordinatesUpdate = async (muralId: string, lat: number, lng: number) => {
+    // Update local state immediately for responsive UI
     setMurals(prevMurals =>
       prevMurals.map(mural =>
         mural.id === muralId
@@ -36,6 +56,21 @@ export default function Home() {
           : mural
       )
     );
+
+    // Save to server
+    try {
+      const response = await fetch('/api/murals', {
+        method: 'PATCH',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ muralId, lat, lng })
+      });
+
+      if (response.ok) {
+        console.log(`Saved mural ${muralId} coordinates to file`);
+      }
+    } catch (error) {
+      console.error('Error saving mural coordinates:', error);
+    }
   };
 
   const handleExportCoordinates = () => {
@@ -48,6 +83,17 @@ export default function Home() {
     linkElement.setAttribute('download', exportFileDefaultName);
     linkElement.click();
   };
+
+  if (loading) {
+    return (
+      <div className="w-full h-screen flex items-center justify-center bg-gray-100">
+        <div className="text-center">
+          <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-blue-600 mx-auto mb-4"></div>
+          <p className="text-gray-600">Loading murals...</p>
+        </div>
+      </div>
+    );
+  }
 
   return (
     <div className="relative w-screen h-screen overflow-hidden">
