@@ -55,7 +55,7 @@ export default function MuralMarker({
           {/* Pin Shape */}
           <path
             d="M20 0C9 0 0 9 0 20C0 35 20 50 20 50C20 50 40 35 40 20C40 9 31 0 20 0Z"
-            fill={isSelected ? '#10B981' : '#3B82F6'}
+            fill={isSelected ? '#10B981' : '#F59E0B'}
             className="transition-colors duration-200"
           />
           {/* Inner Circle */}
@@ -73,7 +73,7 @@ export default function MuralMarker({
             textAnchor="middle"
             fontSize="8"
             fontWeight="bold"
-            fill={isSelected ? '#10B981' : '#3B82F6'}
+            fill={isSelected ? '#10B981' : '#F59E0B'}
             className="select-none"
           >
             {mural.buildingCode}
