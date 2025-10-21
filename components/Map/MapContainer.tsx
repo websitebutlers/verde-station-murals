@@ -365,21 +365,25 @@ export default function MapContainer({
               ]
             }}
           >
-            <Layer
-              id="current-building-outline"
-              type={currentBuildingPoints.length > 2 ? 'fill' : 'line'}
-              paint={
-                currentBuildingPoints.length > 2
-                  ? {
-                      'fill-color': '#3B82F6',
-                      'fill-opacity': 0.3
-                    }
-                  : {
-                      'line-color': '#3B82F6',
-                      'line-width': 2
-                    }
-              }
-            />
+            {currentBuildingPoints.length > 2 ? (
+              <Layer
+                id="current-building-outline"
+                type="fill"
+                paint={{
+                  'fill-color': '#3B82F6',
+                  'fill-opacity': 0.3
+                }}
+              />
+            ) : (
+              <Layer
+                id="current-building-outline"
+                type="line"
+                paint={{
+                  'line-color': '#3B82F6',
+                  'line-width': 2
+                }}
+              />
+            )}
           </Source>
         )}
 
