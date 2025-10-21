@@ -32,21 +32,32 @@ export default function MapContainer({
   const [selectedMural, setSelectedMural] = useState<Mural | null>(null);
 
   // Add 3D buildings layer when map loads
-  useEffect(() => {
+  const handleMapLoad = useCallback(() => {
     if (!mapRef.current) return;
 
     const map = mapRef.current.getMap();
+    console.log('🏗️ Map loaded via onLoad callback!');
+    console.log('🔍 Current zoom level:', map.getZoom());
+    console.log('📐 Current pitch:', map.getPitch());
+    console.log('🧭 Current bearing:', map.getBearing());
 
-    const handleLoad = () => {
-      // Check if the layer already exists
-      if (map.getLayer('3d-buildings')) return;
+    // Check if the layer already exists
+    if (map.getLayer('3d-buildings')) {
+      console.log('⚠️ 3D buildings layer already exists');
+      return;
+    }
 
-      // Add 3D buildings layer
-      const layers = map.getStyle()?.layers;
-      const labelLayerId = layers?.find(
-        (layer) => layer.type === 'symbol' && layer.layout?.['text-field']
-      )?.id;
+    // Add 3D buildings layer
+    const layers = map.getStyle()?.layers;
+    console.log('📋 Available layers:', layers?.length);
 
+    const labelLayerId = layers?.find(
+      (layer) => layer.type === 'symbol' && layer.layout?.['text-field']
+    )?.id;
+
+    console.log('🏷️ Label layer ID:', labelLayerId);
+
+    try {
       map.addLayer(
         {
           id: '3d-buildings',
@@ -85,17 +96,14 @@ export default function MapContainer({
         } as AnyLayer,
         labelLayerId
       );
-    };
+      console.log('✅ 3D buildings layer added successfully!');
 
-    if (map.isStyleLoaded()) {
-      handleLoad();
-    } else {
-      map.on('load', handleLoad);
+      // Force a repaint
+      map.triggerRepaint();
+      console.log('🎨 Triggered map repaint');
+    } catch (error) {
+      console.error('❌ Error adding 3D buildings layer:', error);
     }
-
-    return () => {
-      map.off('load', handleLoad);
-    };
   }, []);
 
   const handleMarkerClick = useCallback((mural: Mural) => {
@@ -118,6 +126,7 @@ export default function MapContainer({
       <Map
         ref={mapRef}
         initialViewState={VERDE_STATION_CENTER}
+        onLoad={handleMapLoad}
         mapStyle="mapbox://styles/mapbox/dark-v11"
         mapboxAccessToken={process.env.NEXT_PUBLIC_MAPBOX_TOKEN}
         style={{ width: '100%', height: '100%' }}
