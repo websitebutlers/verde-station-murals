@@ -9,12 +9,14 @@ import { Mural } from '@/types/mural';
 import { CustomBuilding } from '@/types/building';
 import MuralMarker from './MuralMarker';
 import MuralModal from '../MuralDetail/MuralModal';
+import MuralEditModal from '../MuralDetail/MuralEditModal';
 import BuildingEditor from './BuildingEditor';
 
 interface MapContainerProps {
   murals: Mural[];
   adminMode?: boolean;
   onCoordinatesUpdate?: (muralId: string, lat: number, lng: number) => void;
+  onMuralUpdate?: (updatedMural: Mural) => void;
 }
 
 const VERDE_STATION_CENTER = {
@@ -30,10 +32,12 @@ const BUILDINGS_STORAGE_KEY = 'verde-station-custom-buildings';
 export default function MapContainer({
   murals,
   adminMode = false,
-  onCoordinatesUpdate
+  onCoordinatesUpdate,
+  onMuralUpdate
 }: MapContainerProps) {
   const mapRef = useRef<MapRef>(null);
   const [selectedMural, setSelectedMural] = useState<Mural | null>(null);
+  const [editingMural, setEditingMural] = useState<Mural | null>(null);
   const [mapLoaded, setMapLoaded] = useState(false);
   const [spreadPins, setSpreadPins] = useState(false);
 
@@ -168,8 +172,14 @@ export default function MapContainer({
   }, []);
 
   const handleMarkerClick = useCallback((mural: Mural) => {
-    setSelectedMural(mural);
-  }, []);
+    if (adminMode) {
+      // In admin mode, open edit modal
+      setEditingMural(mural);
+    } else {
+      // In normal mode, open view modal
+      setSelectedMural(mural);
+    }
+  }, [adminMode]);
 
   const handleMarkerDrag = useCallback((muralId: string, event: MarkerDragEvent) => {
     if (adminMode && onCoordinatesUpdate) {
@@ -220,6 +230,13 @@ export default function MapContainer({
   const handleToggleSatellite = useCallback(() => {
     setUseSatellite(prev => !prev);
   }, []);
+
+  const handleSaveMural = useCallback((updatedMural: Mural) => {
+    if (onMuralUpdate) {
+      onMuralUpdate(updatedMural);
+    }
+    setEditingMural(null);
+  }, [onMuralUpdate]);
 
   // Spread pins in a grid when they're stacked
   const getSpreadCoordinates = useCallback((mural: Mural, index: number) => {
@@ -372,11 +389,21 @@ export default function MapContainer({
         muralCount={murals.length}
       />
 
-      {/* Mural Detail Modal */}
-      {selectedMural && (
+      {/* Mural Detail Modal (View Mode) */}
+      {selectedMural && !adminMode && (
         <MuralModal
           mural={selectedMural}
           onClose={handleCloseModal}
+        />
+      )}
+
+      {/* Mural Edit Modal (Admin Mode) */}
+      {editingMural && adminMode && (
+        <MuralEditModal
+          mural={editingMural}
+          isOpen={true}
+          onClose={() => setEditingMural(null)}
+          onSave={handleSaveMural}
         />
       )}
     </>

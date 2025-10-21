@@ -11,6 +11,13 @@ export interface Location {
 export interface Artist {
   name: string;
   socialMedia?: string;
+  bio?: string;
+}
+
+export interface MuralImage {
+  url: string;
+  description: string;
+  isPrimary?: boolean;
 }
 
 export interface Mural {
@@ -18,7 +25,8 @@ export interface Mural {
   name: string;
   location: Location;
   artist: Artist;
-  image: string;
+  image: string; // Legacy - kept for backwards compatibility
+  images?: MuralImage[];
   buildingCode: string;
 }
 

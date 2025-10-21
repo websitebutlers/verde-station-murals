@@ -39,33 +39,55 @@ export async function POST(request: NextRequest) {
   }
 }
 
-// PATCH - Update single mural coordinates
+// PATCH - Update single mural (coordinates or full data)
 export async function PATCH(request: NextRequest) {
   try {
-    const { muralId, lat, lng } = await request.json();
-    
+    const body = await request.json();
+
     // Read current murals
     const fileContent = await fs.readFile(MURALS_FILE, 'utf-8');
     const murals: Mural[] = JSON.parse(fileContent);
-    
-    // Find and update the mural
-    const muralIndex = murals.findIndex(m => m.id === muralId);
-    if (muralIndex === -1) {
+
+    // Check if this is a coordinate update or full mural update
+    if (body.muralId && body.lat !== undefined && body.lng !== undefined) {
+      // Coordinate update (legacy support)
+      const muralIndex = murals.findIndex(m => m.id === body.muralId);
+      if (muralIndex === -1) {
+        return NextResponse.json(
+          { success: false, error: 'Mural not found' },
+          { status: 404 }
+        );
+      }
+
+      murals[muralIndex].location.coordinates = { lat: body.lat, lng: body.lng };
+
+      await fs.writeFile(MURALS_FILE, JSON.stringify(murals, null, 2), 'utf-8');
+      console.log(`Updated mural ${body.muralId} coordinates to (${body.lat}, ${body.lng})`);
+      return NextResponse.json({ success: true, mural: murals[muralIndex] });
+    } else if (body.id) {
+      // Full mural update
+      const muralIndex = murals.findIndex(m => m.id === body.id);
+      if (muralIndex === -1) {
+        return NextResponse.json(
+          { success: false, error: 'Mural not found' },
+          { status: 404 }
+        );
+      }
+
+      // Update the mural with new data
+      murals[muralIndex] = body as Mural;
+
+      await fs.writeFile(MURALS_FILE, JSON.stringify(murals, null, 2), 'utf-8');
+      console.log(`Updated mural ${body.id} data (bio, images, etc.)`);
+      return NextResponse.json({ success: true, mural: murals[muralIndex] });
+    } else {
       return NextResponse.json(
-        { success: false, error: 'Mural not found' },
-        { status: 404 }
+        { success: false, error: 'Invalid request body' },
+        { status: 400 }
       );
     }
-    
-    murals[muralIndex].location.coordinates = { lat, lng };
-    
-    // Write back to file
-    await fs.writeFile(MURALS_FILE, JSON.stringify(murals, null, 2), 'utf-8');
-    
-    console.log(`Updated mural ${muralId} coordinates to (${lat}, ${lng})`);
-    return NextResponse.json({ success: true, mural: murals[muralIndex] });
   } catch (error) {
-    console.error('Error updating mural coordinates:', error);
+    console.error('Error updating mural:', error);
     return NextResponse.json(
       { success: false, error: 'Failed to update mural' },
       { status: 500 }

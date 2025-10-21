@@ -73,6 +73,30 @@ export default function Home() {
     }
   };
 
+  const handleMuralUpdate = async (updatedMural: Mural) => {
+    // Update local state immediately
+    setMurals(prevMurals =>
+      prevMurals.map(mural =>
+        mural.id === updatedMural.id ? updatedMural : mural
+      )
+    );
+
+    // Save to server
+    try {
+      const response = await fetch('/api/murals', {
+        method: 'PATCH',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(updatedMural)
+      });
+
+      if (response.ok) {
+        console.log(`✅ Saved mural ${updatedMural.id} data to file`);
+      }
+    } catch (error) {
+      console.error('❌ Error saving mural data:', error);
+    }
+  };
+
   const handleExportCoordinates = () => {
     const dataStr = JSON.stringify(murals, null, 2);
     const dataUri = 'data:application/json;charset=utf-8,' + encodeURIComponent(dataStr);
@@ -138,6 +162,7 @@ export default function Home() {
           murals={murals}
           adminMode={adminMode}
           onCoordinatesUpdate={handleCoordinatesUpdate}
+          onMuralUpdate={handleMuralUpdate}
         />
       </div>
 
