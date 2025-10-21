@@ -1,8 +1,8 @@
 'use client';
 
 import { useState, useCallback, useRef, useEffect } from 'react';
-import Map, { NavigationControl, GeolocateControl, Source, Layer } from 'react-map-gl/mapbox';
-import type { MapRef, MarkerDragEvent, MapLayerMouseEvent } from 'react-map-gl/mapbox';
+import Map, { NavigationControl, GeolocateControl, Source, Layer, MapMouseEvent } from 'react-map-gl/mapbox';
+import type { MapRef, MarkerDragEvent } from 'react-map-gl/mapbox';
 import type { AnyLayer } from 'mapbox-gl';
 import 'mapbox-gl/dist/mapbox-gl.css';
 import { Mural } from '@/types/mural';
@@ -213,7 +213,7 @@ export default function MapContainer({
   }, []);
 
   // Building editor handlers
-  const handleMapClick = useCallback((event: MapLayerMouseEvent) => {
+  const handleMapClick = useCallback((event: MapMouseEvent) => {
     if (!buildingEditorActive) return;
 
     const { lng, lat } = event.lngLat;
