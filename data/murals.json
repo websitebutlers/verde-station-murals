@@ -14,7 +14,24 @@
       "socialMedia": "madmanart"
     },
     "image": "/murals/abstract-behind-p.jpg",
-    "buildingCode": "14M"
+    "buildingCode": "14M",
+    "images": [
+      {
+        "url": "/assets/madmanart (Abstract Behind P)/IMG_4498.jpg",
+        "description": "Abstract Behind P - Image 1",
+        "isPrimary": true
+      },
+      {
+        "url": "/assets/madmanart (Abstract Behind P)/IMG_4501.jpg",
+        "description": "Abstract Behind P - Image 2",
+        "isPrimary": false
+      },
+      {
+        "url": "/assets/madmanart (Abstract Behind P)/IMG_4553.jpg",
+        "description": "Abstract Behind P - Image 3",
+        "isPrimary": false
+      }
+    ]
   },
   {
     "id": "birds",
@@ -31,7 +48,24 @@
       "socialMedia": "macsh_"
     },
     "image": "/murals/birds.jpg",
-    "buildingCode": "NA"
+    "buildingCode": "NA",
+    "images": [
+      {
+        "url": "/assets/macsch_ (Birds)/IMG_4495.jpg",
+        "description": "Birds - Image 1",
+        "isPrimary": true
+      },
+      {
+        "url": "/assets/macsch_ (Birds)/IMG_4497.jpg",
+        "description": "Birds - Image 2",
+        "isPrimary": false
+      },
+      {
+        "url": "/assets/macsch_ (Birds)/IMG_4547.jpg",
+        "description": "Birds - Image 3",
+        "isPrimary": false
+      }
+    ]
   },
   {
     "id": "cardinal",
@@ -65,7 +99,34 @@
       "socialMedia": "PriceGoodman"
     },
     "image": "/murals/concrete-face.jpg",
-    "buildingCode": "13M"
+    "buildingCode": "13M",
+    "images": [
+      {
+        "url": "/assets/PriceGoodman (Concrete face)/IMG_4476.jpg",
+        "description": "Concrete face - Image 1",
+        "isPrimary": true
+      },
+      {
+        "url": "/assets/PriceGoodman (Concrete face)/IMG_4477.jpg",
+        "description": "Concrete face - Image 2",
+        "isPrimary": false
+      },
+      {
+        "url": "/assets/PriceGoodman (Concrete face)/IMG_4481.jpg",
+        "description": "Concrete face - Image 3",
+        "isPrimary": false
+      },
+      {
+        "url": "/assets/PriceGoodman (Concrete face)/IMG_4557.jpg",
+        "description": "Concrete face - Image 4",
+        "isPrimary": false
+      },
+      {
+        "url": "/assets/PriceGoodman (Concrete face)/IMG_4558.jpg",
+        "description": "Concrete face - Image 5",
+        "isPrimary": false
+      }
+    ]
   },
   {
     "id": "distorted-face",
@@ -82,7 +143,24 @@
       "socialMedia": "TatoCaraveo"
     },
     "image": "/murals/distorted-face.jpg",
-    "buildingCode": "16M"
+    "buildingCode": "16M",
+    "images": [
+      {
+        "url": "/assets/Tato (Cello & Musicians & Distorted Face)/IMG_4524.jpg",
+        "description": "Cello & Musicians & Distorted Face - Image 1",
+        "isPrimary": true
+      },
+      {
+        "url": "/assets/Tato (Cello & Musicians & Distorted Face)/IMG_4527.jpg",
+        "description": "Cello & Musicians & Distorted Face - Image 2",
+        "isPrimary": false
+      },
+      {
+        "url": "/assets/Tato (Cello & Musicians & Distorted Face)/IMG_4538.jpg",
+        "description": "Cello & Musicians & Distorted Face - Image 3",
+        "isPrimary": false
+      }
+    ]
   },
   {
     "id": "dreamy-cotton-field",
@@ -99,7 +177,34 @@
       "socialMedia": "somethingsparkley"
     },
     "image": "/murals/dreamy-cotton-field.jpg",
-    "buildingCode": "6M"
+    "buildingCode": "6M",
+    "images": [
+      {
+        "url": "/assets/somethingsparkley (Dreamy Cotton Fields)/IMG_3555.jpg",
+        "description": "Dreamy Cotton Fields - Image 1",
+        "isPrimary": true
+      },
+      {
+        "url": "/assets/somethingsparkley (Dreamy Cotton Fields)/IMG_3556.jpg",
+        "description": "Dreamy Cotton Fields - Image 2",
+        "isPrimary": false
+      },
+      {
+        "url": "/assets/somethingsparkley (Dreamy Cotton Fields)/IMG_3557.jpg",
+        "description": "Dreamy Cotton Fields - Image 3",
+        "isPrimary": false
+      },
+      {
+        "url": "/assets/somethingsparkley (Dreamy Cotton Fields)/IMG_3558.jpg",
+        "description": "Dreamy Cotton Fields - Image 4",
+        "isPrimary": false
+      },
+      {
+        "url": "/assets/somethingsparkley (Dreamy Cotton Fields)/IMG_3563.jpg",
+        "description": "Dreamy Cotton Fields - Image 5",
+        "isPrimary": false
+      }
+    ]
   },
   {
     "id": "electric-box",
@@ -116,7 +221,19 @@
       "socialMedia": "JustCreatedIt"
     },
     "image": "/murals/electric-box.jpg",
-    "buildingCode": "21M"
+    "buildingCode": "21M",
+    "images": [
+      {
+        "url": "/assets/JustCreatedIt (Peony & Electric box)/IMG_4504.jpg",
+        "description": "Peony & Electric box - Image 1",
+        "isPrimary": true
+      },
+      {
+        "url": "/assets/JustCreatedIt (Peony & Electric box)/IMG_4505.jpg",
+        "description": "Peony & Electric box - Image 2",
+        "isPrimary": false
+      }
+    ]
   },
   {
     "id": "field-of-screams",
@@ -133,7 +250,34 @@
       "socialMedia": "PrimeAfterPrime"
     },
     "image": "/murals/field-of-screams.jpg",
-    "buildingCode": "5M"
+    "buildingCode": "5M",
+    "images": [
+      {
+        "url": "/assets/PrimeAfterPrime (Field of Screams)/IMG_3562.jpg",
+        "description": "Field of Screams - Image 1",
+        "isPrimary": true
+      },
+      {
+        "url": "/assets/PrimeAfterPrime (Field of Screams)/IMG_9435.jpg",
+        "description": "Field of Screams - Image 2",
+        "isPrimary": false
+      },
+      {
+        "url": "/assets/PrimeAfterPrime (Field of Screams)/IMG_9436.jpg",
+        "description": "Field of Screams - Image 3",
+        "isPrimary": false
+      },
+      {
+        "url": "/assets/PrimeAfterPrime (Field of Screams)/IMG_9440.jpg",
+        "description": "Field of Screams - Image 4",
+        "isPrimary": false
+      },
+      {
+        "url": "/assets/PrimeAfterPrime (Field of Screams)/IMG_9441.jpg",
+        "description": "Field of Screams - Image 5",
+        "isPrimary": false
+      }
+    ]
   },
   {
     "id": "gilbert-mural",
@@ -150,7 +294,34 @@
       "socialMedia": "Isaac.Caruso"
     },
     "image": "/murals/gilbert-mural.jpg",
-    "buildingCode": "9M"
+    "buildingCode": "9M",
+    "images": [
+      {
+        "url": "/assets/Issac.Caruso (Largest Mural)/IMG_4455.jpg",
+        "description": "Largest Mural - Image 1",
+        "isPrimary": true
+      },
+      {
+        "url": "/assets/Issac.Caruso (Largest Mural)/IMG_4458.jpg",
+        "description": "Largest Mural - Image 2",
+        "isPrimary": false
+      },
+      {
+        "url": "/assets/Issac.Caruso (Largest Mural)/IMG_4461.jpg",
+        "description": "Largest Mural - Image 3",
+        "isPrimary": false
+      },
+      {
+        "url": "/assets/Issac.Caruso (Largest Mural)/IMG_4462.jpg",
+        "description": "Largest Mural - Image 4",
+        "isPrimary": false
+      },
+      {
+        "url": "/assets/Issac.Caruso (Largest Mural)/IMG_4465.jpg",
+        "description": "Largest Mural - Image 5",
+        "isPrimary": false
+      }
+    ]
   },
   {
     "id": "girl-flower-pannels",
@@ -167,7 +338,24 @@
       "socialMedia": "clyde_0000"
     },
     "image": "/murals/girl-flower-pannels.jpg",
-    "buildingCode": "18M"
+    "buildingCode": "18M",
+    "images": [
+      {
+        "url": "/assets/clyde_0000 (Girl & Flower)/IMG_4517.jpg",
+        "description": "Girl & Flower - Image 1",
+        "isPrimary": true
+      },
+      {
+        "url": "/assets/clyde_0000 (Girl & Flower)/IMG_4519.jpg",
+        "description": "Girl & Flower - Image 2",
+        "isPrimary": false
+      },
+      {
+        "url": "/assets/clyde_0000 (Girl & Flower)/IMG_4521.jpg",
+        "description": "Girl & Flower - Image 3",
+        "isPrimary": false
+      }
+    ]
   },
   {
     "id": "horse-and-cowboy",
@@ -184,7 +372,24 @@
       "socialMedia": "GabrielPecinaArt"
     },
     "image": "/murals/horse-and-cowboy.jpg",
-    "buildingCode": "4M"
+    "buildingCode": "4M",
+    "images": [
+      {
+        "url": "/assets/GabrielPecinaArt (Horse & Cowboy)/Copy of IMG_0640.jpg",
+        "description": "Horse & Cowboy - Image 1",
+        "isPrimary": true
+      },
+      {
+        "url": "/assets/GabrielPecinaArt (Horse & Cowboy)/Copy of IMG_0657.jpg",
+        "description": "Horse & Cowboy - Image 2",
+        "isPrimary": false
+      },
+      {
+        "url": "/assets/GabrielPecinaArt (Horse & Cowboy)/Copy of IMG_0662.jpg",
+        "description": "Horse & Cowboy - Image 3",
+        "isPrimary": false
+      }
+    ]
   },
   {
     "id": "jimi-hendrix",
@@ -201,7 +406,24 @@
       "socialMedia": "SmokeyJoePaintingCo"
     },
     "image": "/murals/jimi-hendrix.jpg",
-    "buildingCode": "17M"
+    "buildingCode": "17M",
+    "images": [
+      {
+        "url": "/assets/SmokeyJoePaintingCo/Jimi Hendrix/IMG_4509.jpg",
+        "description": "Jimi Hendrix - Image 1",
+        "isPrimary": true
+      },
+      {
+        "url": "/assets/SmokeyJoePaintingCo/Jimi Hendrix/IMG_4511.jpg",
+        "description": "Jimi Hendrix - Image 2",
+        "isPrimary": false
+      },
+      {
+        "url": "/assets/SmokeyJoePaintingCo/Jimi Hendrix/IMG_4513.jpg",
+        "description": "Jimi Hendrix - Image 3",
+        "isPrimary": false
+      }
+    ]
   },
   {
     "id": "love-peace-adjacent-murals",
@@ -218,7 +440,34 @@
       "socialMedia": "nyla.lee"
     },
     "image": "/murals/love-peace-adjacent-murals.jpg",
-    "buildingCode": "15M"
+    "buildingCode": "15M",
+    "images": [
+      {
+        "url": "/assets/nyla.lee (Love and Peace)/IMG_4483.jpg",
+        "description": "Love and Peace - Image 1",
+        "isPrimary": true
+      },
+      {
+        "url": "/assets/nyla.lee (Love and Peace)/IMG_4485.jpg",
+        "description": "Love and Peace - Image 2",
+        "isPrimary": false
+      },
+      {
+        "url": "/assets/nyla.lee (Love and Peace)/IMG_4486.jpg",
+        "description": "Love and Peace - Image 3",
+        "isPrimary": false
+      },
+      {
+        "url": "/assets/nyla.lee (Love and Peace)/IMG_4489.jpg",
+        "description": "Love and Peace - Image 4",
+        "isPrimary": false
+      },
+      {
+        "url": "/assets/nyla.lee (Love and Peace)/IMG_4490.jpg",
+        "description": "Love and Peace - Image 5",
+        "isPrimary": false
+      }
+    ]
   },
   {
     "id": "low-rider-truck",
@@ -235,7 +484,24 @@
       "socialMedia": "ABOMBTHEARTIST"
     },
     "image": "/murals/low-rider-truck.jpg",
-    "buildingCode": "11M"
+    "buildingCode": "11M",
+    "images": [
+      {
+        "url": "/assets/ABOMBTHEARTIST (Low Rider Truck)/IMG_4466.jpg",
+        "description": "Low Rider Truck - Image 1",
+        "isPrimary": true
+      },
+      {
+        "url": "/assets/ABOMBTHEARTIST (Low Rider Truck)/IMG_4467.jpg",
+        "description": "Low Rider Truck - Image 2",
+        "isPrimary": false
+      },
+      {
+        "url": "/assets/ABOMBTHEARTIST (Low Rider Truck)/IMG_4469.jpg",
+        "description": "Low Rider Truck - Image 3",
+        "isPrimary": false
+      }
+    ]
   },
   {
     "id": "manny-moe-jack",
@@ -252,7 +518,29 @@
       "socialMedia": "ize_official"
     },
     "image": "/murals/manny-moe-jack.jpg",
-    "buildingCode": "20M"
+    "buildingCode": "20M",
+    "images": [
+      {
+        "url": "/assets/ize_official (Manny, Moe, & Jack)/Copy of IMG_0124.jpg",
+        "description": "Manny, Moe, & Jack - Image 1",
+        "isPrimary": true
+      },
+      {
+        "url": "/assets/ize_official (Manny, Moe, & Jack)/IMG_4379.jpg",
+        "description": "Manny, Moe, & Jack - Image 2",
+        "isPrimary": false
+      },
+      {
+        "url": "/assets/ize_official (Manny, Moe, & Jack)/IMG_4382.jpg",
+        "description": "Manny, Moe, & Jack - Image 3",
+        "isPrimary": false
+      },
+      {
+        "url": "/assets/ize_official (Manny, Moe, & Jack)/IMG_4385.jpg",
+        "description": "Manny, Moe, & Jack - Image 4",
+        "isPrimary": false
+      }
+    ]
   },
   {
     "id": "musician",
@@ -269,7 +557,19 @@
       "socialMedia": "TatoCaraveo"
     },
     "image": "/murals/musician.jpg",
-    "buildingCode": "2M"
+    "buildingCode": "2M",
+    "images": [
+      {
+        "url": "/assets/Tato (Cello & Musicians & Distorted Face)/IMG_4540.jpg",
+        "description": "Cello & Musicians & Distorted Face - Image 1",
+        "isPrimary": true
+      },
+      {
+        "url": "/assets/Tato (Cello & Musicians & Distorted Face)/IMG_4542.jpg",
+        "description": "Cello & Musicians & Distorted Face - Image 2",
+        "isPrimary": false
+      }
+    ]
   },
   {
     "id": "navajo-hoop-dancer",
@@ -286,7 +586,24 @@
       "socialMedia": "jessie.yazzie"
     },
     "image": "/murals/navajo-hoop-dancer.jpg",
-    "buildingCode": "12M"
+    "buildingCode": "12M",
+    "images": [
+      {
+        "url": "/assets/jessie.yazzie (Navajo Hoop Dancer)/IMG_4471.jpg",
+        "description": "Navajo Hoop Dancer - Image 1",
+        "isPrimary": true
+      },
+      {
+        "url": "/assets/jessie.yazzie (Navajo Hoop Dancer)/IMG_4472.jpg",
+        "description": "Navajo Hoop Dancer - Image 2",
+        "isPrimary": false
+      },
+      {
+        "url": "/assets/jessie.yazzie (Navajo Hoop Dancer)/IMG_4475.jpg",
+        "description": "Navajo Hoop Dancer - Image 3",
+        "isPrimary": false
+      }
+    ]
   },
   {
     "id": "peony",
@@ -303,7 +620,19 @@
       "socialMedia": "JustCreatedIt"
     },
     "image": "/murals/peony.jpg",
-    "buildingCode": "19M"
+    "buildingCode": "19M",
+    "images": [
+      {
+        "url": "/assets/JustCreatedIt (Peony & Electric box)/IMG_4515.jpg",
+        "description": "Peony & Electric box - Image 1",
+        "isPrimary": true
+      },
+      {
+        "url": "/assets/JustCreatedIt (Peony & Electric box)/IMG_4516.jpg",
+        "description": "Peony & Electric box - Image 2",
+        "isPrimary": false
+      }
+    ]
   },
   {
     "id": "shiny-statues",
@@ -320,7 +649,34 @@
       "socialMedia": "torvasm"
     },
     "image": "/murals/shiny-statues.jpg",
-    "buildingCode": "7M"
+    "buildingCode": "7M",
+    "images": [
+      {
+        "url": "/assets/torvasm (Shiny Statues)/IMG_4430.jpg",
+        "description": "Shiny Statues - Image 1",
+        "isPrimary": true
+      },
+      {
+        "url": "/assets/torvasm (Shiny Statues)/IMG_4433.jpg",
+        "description": "Shiny Statues - Image 2",
+        "isPrimary": false
+      },
+      {
+        "url": "/assets/torvasm (Shiny Statues)/IMG_4435.jpg",
+        "description": "Shiny Statues - Image 3",
+        "isPrimary": false
+      },
+      {
+        "url": "/assets/torvasm (Shiny Statues)/IMG_4437.jpg",
+        "description": "Shiny Statues - Image 4",
+        "isPrimary": false
+      },
+      {
+        "url": "/assets/torvasm (Shiny Statues)/IMG_4439.jpg",
+        "description": "Shiny Statues - Image 5",
+        "isPrimary": false
+      }
+    ]
   },
   {
     "id": "utility-box",
@@ -337,7 +693,24 @@
       "socialMedia": "SmokeyJoePaintingCo"
     },
     "image": "/murals/utility-box.jpg",
-    "buildingCode": "8M"
+    "buildingCode": "8M",
+    "images": [
+      {
+        "url": "/assets/SmokeyJoePaintingCo/Utility box/IMG_4445.jpg",
+        "description": "Utility box - Image 1",
+        "isPrimary": true
+      },
+      {
+        "url": "/assets/SmokeyJoePaintingCo/Utility box/IMG_4447.jpg",
+        "description": "Utility box - Image 2",
+        "isPrimary": false
+      },
+      {
+        "url": "/assets/SmokeyJoePaintingCo/Utility box/IMG_4448.jpg",
+        "description": "Utility box - Image 3",
+        "isPrimary": false
+      }
+    ]
   },
   {
     "id": "welcome",
@@ -354,7 +727,34 @@
       "socialMedia": "tonyplak"
     },
     "image": "/murals/welcome.jpg",
-    "buildingCode": "3M"
+    "buildingCode": "3M",
+    "images": [
+      {
+        "url": "/assets/tonyplak (Welcome)/IMG_4529.jpg",
+        "description": "Welcome - Image 1",
+        "isPrimary": true
+      },
+      {
+        "url": "/assets/tonyplak (Welcome)/IMG_4530.jpg",
+        "description": "Welcome - Image 2",
+        "isPrimary": false
+      },
+      {
+        "url": "/assets/tonyplak (Welcome)/IMG_4533.jpg",
+        "description": "Welcome - Image 3",
+        "isPrimary": false
+      },
+      {
+        "url": "/assets/tonyplak (Welcome)/IMG_4534.jpg",
+        "description": "Welcome - Image 4",
+        "isPrimary": false
+      },
+      {
+        "url": "/assets/tonyplak (Welcome)/IMG_4537.jpg",
+        "description": "Welcome - Image 5",
+        "isPrimary": false
+      }
+    ]
   },
   {
     "id": "whimsical-tiger",
@@ -371,6 +771,18 @@
       "socialMedia": "Baconcat"
     },
     "image": "/murals/whimsical-tiger.jpg",
-    "buildingCode": "1M"
+    "buildingCode": "1M",
+    "images": [
+      {
+        "url": "/assets/Baconcat (Whimsical Tiger)/IMG_4488.jpg",
+        "description": "Whimsical Tiger - Image 1",
+        "isPrimary": true
+      },
+      {
+        "url": "/assets/Baconcat (Whimsical Tiger)/Screenshot 2025-07-07 at 12.48.43 PM.png",
+        "description": "Whimsical Tiger - Image 2",
+        "isPrimary": false
+      }
+    ]
   }
 ]
