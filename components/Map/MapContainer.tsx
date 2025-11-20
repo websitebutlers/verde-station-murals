@@ -13,8 +13,7 @@ import MuralEditModal from '../MuralDetail/MuralEditModal';
 import BuildingEditor from './BuildingEditor';
 import MuralLegend from './MuralLegend';
 import PitchControl from './PitchControl';
-import { useGeolocation } from '@/hooks/useGeolocation';
-import { DirectionsRoute } from '@/utils/directions';
+import { DirectionsRoute, calculateDistance } from '@/utils/directions';
 
 interface MapContainerProps {
   murals: Mural[];
@@ -506,15 +505,12 @@ export default function MapContainer({
           onClose={handleCloseModal}
           onNavigate={onNavigate}
           userLocation={userLocation}
-          distance={userLocation ? (() => {
-            const { calculateDistance } = require('@/utils/directions');
-            return calculateDistance(
-              userLocation.latitude,
-              userLocation.longitude,
-              selectedMural.location.coordinates.lat,
-              selectedMural.location.coordinates.lng
-            );
-          })() : null}
+          distance={userLocation ? calculateDistance(
+            userLocation.latitude,
+            userLocation.longitude,
+            selectedMural.location.coordinates.lat,
+            selectedMural.location.coordinates.lng
+          ) : null}
         />
       )}
 

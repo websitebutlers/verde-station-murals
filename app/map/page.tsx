@@ -25,10 +25,9 @@ export default function PublicMapPage() {
   const [loading, setLoading] = useState(true);
   const [activeRoute, setActiveRoute] = useState<DirectionsRoute | null>(null);
   const [routeDestination, setRouteDestination] = useState<Mural | null>(null);
-  const [isLoadingRoute, setIsLoadingRoute] = useState(false);
 
   // Get user's location
-  const { position: userPosition, error: locationError } = useGeolocation();
+  const { position: userPosition } = useGeolocation();
 
   // Load murals from API on mount
   useEffect(() => {
@@ -56,7 +55,6 @@ export default function PublicMapPage() {
       return;
     }
 
-    setIsLoadingRoute(true);
     try {
       const route = await getWalkingDirections(
         [userPosition.longitude, userPosition.latitude],
@@ -69,8 +67,6 @@ export default function PublicMapPage() {
     } catch (error) {
       console.error('Error fetching directions:', error);
       alert('Unable to get directions. Please try again.');
-    } finally {
-      setIsLoadingRoute(false);
     }
   }, [userPosition]);
 
@@ -132,8 +128,7 @@ export default function PublicMapPage() {
             {userPosition && (
               <button
                 onClick={handleNavigateToNearest}
-                disabled={isLoadingRoute}
-                className="flex items-center gap-2 px-4 py-2 bg-green-600 text-white rounded-lg hover:bg-green-700 transition-all duration-200 hover:scale-105 shadow-md disabled:opacity-50 disabled:cursor-not-allowed"
+                className="flex items-center gap-2 px-4 py-2 bg-green-600 text-white rounded-lg hover:bg-green-700 transition-all duration-200 hover:scale-105 shadow-md"
               >
                 <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />

@@ -4,7 +4,7 @@ import { useState, useEffect, useCallback } from 'react';
 import dynamic from 'next/dynamic';
 import { Mural } from '@/types/mural';
 import { useGeolocation } from '@/hooks/useGeolocation';
-import { getWalkingDirections, calculateDistance, DirectionsRoute } from '@/utils/directions';
+import { getWalkingDirections, DirectionsRoute } from '@/utils/directions';
 import DirectionsPanel from '@/components/Map/DirectionsPanel';
 
 // Dynamically import MapContainer to avoid SSR issues with Mapbox
@@ -25,7 +25,6 @@ export default function EmbedMapPage() {
   const [loading, setLoading] = useState(true);
   const [activeRoute, setActiveRoute] = useState<DirectionsRoute | null>(null);
   const [routeDestination, setRouteDestination] = useState<Mural | null>(null);
-  const [isLoadingRoute, setIsLoadingRoute] = useState(false);
 
   // Get user's location
   const { position: userPosition } = useGeolocation();
@@ -56,7 +55,6 @@ export default function EmbedMapPage() {
       return;
     }
 
-    setIsLoadingRoute(true);
     try {
       const route = await getWalkingDirections(
         [userPosition.longitude, userPosition.latitude],
@@ -69,8 +67,6 @@ export default function EmbedMapPage() {
     } catch (error) {
       console.error('Error fetching directions:', error);
       alert('Unable to get directions. Please try again.');
-    } finally {
-      setIsLoadingRoute(false);
     }
   }, [userPosition]);
 

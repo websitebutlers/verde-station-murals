@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 
-export interface GeolocationPosition {
+export interface UserPosition {
   latitude: number;
   longitude: number;
   accuracy: number;
@@ -8,7 +8,7 @@ export interface GeolocationPosition {
 }
 
 export interface GeolocationState {
-  position: GeolocationPosition | null;
+  position: UserPosition | null;
   error: string | null;
   loading: boolean;
   isSupported: boolean;
