@@ -1,6 +1,7 @@
 'use client';
 
-import { useEffect, useState } from 'react';
+import { useEffect, useState, useRef } from 'react';
+import type { TouchEvent } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Mural } from '@/types/mural';
 import Image from 'next/image';
@@ -17,6 +18,33 @@ interface MuralModalProps {
 export default function MuralModal({ mural, onClose, onNavigate, userLocation, distance }: MuralModalProps) {
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
   const [showFullBio, setShowFullBio] = useState(false);
+  const touchStartXRef = useRef<number | null>(null);
+
+  const handleTouchStart = (e: TouchEvent<HTMLDivElement>) => {
+    touchStartXRef.current = e.touches[0]?.clientX ?? null;
+  };
+
+  const handleTouchEnd = (e: TouchEvent<HTMLDivElement>) => {
+    if (touchStartXRef.current === null) return;
+
+    const deltaX = e.changedTouches[0]?.clientX - touchStartXRef.current;
+    const threshold = 50;
+
+    if (Math.abs(deltaX) > threshold && hasMultipleImages) {
+      if (deltaX < 0) {
+        // Swipe left -> next image
+        setCurrentImageIndex((prev) => (prev === images.length - 1 ? 0 : prev + 1));
+      } else {
+        // Swipe right -> previous image
+        setCurrentImageIndex((prev) => (prev === 0 ? images.length - 1 : prev - 1));
+      }
+    }
+
+
+    touchStartXRef.current = null;
+  };
+
+
 
   // Get images array, fallback to legacy single image
   const images = mural.images && mural.images.length > 0
@@ -24,6 +52,18 @@ export default function MuralModal({ mural, onClose, onNavigate, userLocation, d
     : [{ url: mural.image, description: mural.name, isPrimary: true }];
 
   const hasMultipleImages = images.length > 1;
+
+  // Auto-advance images every 5 seconds when multiple images are available
+  useEffect(() => {
+    if (!hasMultipleImages) return;
+
+    const interval = window.setInterval(() => {
+      setCurrentImageIndex((prev) => (prev === images.length - 1 ? 0 : prev + 1));
+    }, 5000);
+
+    return () => window.clearInterval(interval);
+  }, [hasMultipleImages, images.length]);
+
   // Handle keyboard navigation
   useEffect(() => {
     const handleKeyDown = (e: KeyboardEvent) => {
@@ -90,7 +130,11 @@ export default function MuralModal({ mural, onClose, onNavigate, userLocation, d
           {/* Scrollable Content */}
           <div className="overflow-y-auto max-h-[90vh]">
             {/* Image Slider */}
-            <div className="relative w-full h-96 bg-gray-100 group">
+            <div
+              className="relative w-full h-96 bg-gray-100 group"
+              onTouchStart={handleTouchStart}
+              onTouchEnd={handleTouchEnd}
+            >
               <Image
                 src={images[currentImageIndex].url}
                 alt={images[currentImageIndex].description || mural.name}
@@ -104,7 +148,7 @@ export default function MuralModal({ mural, onClose, onNavigate, userLocation, d
               {hasMultipleImages && (
                 <button
                   onClick={() => setCurrentImageIndex((prev) => (prev === 0 ? images.length - 1 : prev - 1))}
-                  className="absolute left-4 top-1/2 -translate-y-1/2 w-10 h-10 flex items-center justify-center bg-white/90 hover:bg-white rounded-full shadow-lg transition-all duration-200 opacity-0 group-hover:opacity-100"
+                  className="absolute left-4 top-1/2 -translate-y-1/2 w-10 h-10 flex items-center justify-center bg-white/90 hover:bg-white rounded-full shadow-lg transition-all duration-200 opacity-100 md:opacity-0 md:group-hover:opacity-100"
                   aria-label="Previous image"
                 >
                   <svg
@@ -125,7 +169,7 @@ export default function MuralModal({ mural, onClose, onNavigate, userLocation, d
               {hasMultipleImages && (
                 <button
                   onClick={() => setCurrentImageIndex((prev) => (prev === images.length - 1 ? 0 : prev + 1))}
-                  className="absolute right-4 top-1/2 -translate-y-1/2 w-10 h-10 flex items-center justify-center bg-white/90 hover:bg-white rounded-full shadow-lg transition-all duration-200 opacity-0 group-hover:opacity-100"
+                  className="absolute right-4 top-1/2 -translate-y-1/2 w-10 h-10 flex items-center justify-center bg-white/90 hover:bg-white rounded-full shadow-lg transition-all duration-200 opacity-100 md:opacity-0 md:group-hover:opacity-100"
                   aria-label="Next image"
                 >
                   <svg
