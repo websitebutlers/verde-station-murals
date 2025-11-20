@@ -1,7 +1,7 @@
 'use client';
 
 import { useState, useCallback, useRef, useEffect } from 'react';
-import Map, { NavigationControl, GeolocateControl, Source, Layer, MapMouseEvent } from 'react-map-gl/mapbox';
+import Map, { NavigationControl, GeolocateControl, Source, Layer, MapMouseEvent, Marker } from 'react-map-gl/mapbox';
 import type { MapRef, MarkerDragEvent } from 'react-map-gl/mapbox';
 import type { AnyLayer } from 'mapbox-gl';
 import 'mapbox-gl/dist/mapbox-gl.css';
@@ -12,6 +12,9 @@ import MuralModal from '../MuralDetail/MuralModal';
 import MuralEditModal from '../MuralDetail/MuralEditModal';
 import BuildingEditor from './BuildingEditor';
 import MuralLegend from './MuralLegend';
+import PitchControl from './PitchControl';
+import { useGeolocation } from '@/hooks/useGeolocation';
+import { DirectionsRoute } from '@/utils/directions';
 
 interface MapContainerProps {
   murals: Mural[];
@@ -19,6 +22,9 @@ interface MapContainerProps {
   onCoordinatesUpdate?: (muralId: string, lat: number, lng: number) => void;
   onMuralUpdate?: (updatedMural: Mural) => void;
   hideControls?: boolean;
+  userLocation?: { latitude: number; longitude: number } | null;
+  activeRoute?: DirectionsRoute | null;
+  onNavigate?: (mural: Mural) => void;
 }
 
 const VERDE_STATION_CENTER = {
@@ -34,7 +40,10 @@ export default function MapContainer({
   adminMode = false,
   onCoordinatesUpdate,
   onMuralUpdate,
-  hideControls = false
+  hideControls = false,
+  userLocation,
+  activeRoute,
+  onNavigate
 }: MapContainerProps) {
   const mapRef = useRef<MapRef>(null);
   const [selectedMural, setSelectedMural] = useState<Mural | null>(null);
@@ -287,6 +296,7 @@ export default function MapContainer({
           murals={murals}
           onMuralSelect={handleLegendMuralSelect}
           selectedMuralId={selectedMural?.id}
+          userLocation={userLocation}
         />
       )}
 
@@ -306,6 +316,65 @@ export default function MapContainer({
         {/* Navigation Controls */}
         <NavigationControl position="top-right" />
         <GeolocateControl position="top-right" />
+
+        {/* User Location Marker */}
+        {userLocation && (
+          <Marker
+            longitude={userLocation.longitude}
+            latitude={userLocation.latitude}
+            anchor="center"
+          >
+            <div className="relative">
+              {/* Pulsing outer ring */}
+              <div className="absolute inset-0 w-12 h-12 -translate-x-1/2 -translate-y-1/2 left-1/2 top-1/2">
+                <div className="absolute inset-0 bg-blue-500 rounded-full opacity-30 animate-ping" />
+              </div>
+              {/* Inner dot */}
+              <div className="relative w-4 h-4 bg-blue-500 border-2 border-white rounded-full shadow-lg" />
+            </div>
+          </Marker>
+        )}
+
+        {/* Walking Route */}
+        {activeRoute && (
+          <Source
+            id="walking-route"
+            type="geojson"
+            data={{
+              type: 'Feature',
+              properties: {},
+              geometry: activeRoute.geometry
+            }}
+          >
+            <Layer
+              id="route-line"
+              type="line"
+              paint={{
+                'line-color': '#3B82F6',
+                'line-width': 4,
+                'line-opacity': 0.8
+              }}
+              layout={{
+                'line-cap': 'round',
+                'line-join': 'round'
+              }}
+            />
+            <Layer
+              id="route-line-outline"
+              type="line"
+              paint={{
+                'line-color': '#FFFFFF',
+                'line-width': 6,
+                'line-opacity': 0.5
+              }}
+              layout={{
+                'line-cap': 'round',
+                'line-join': 'round'
+              }}
+              beforeId="route-line"
+            />
+          </Source>
+        )}
 
         {/* Custom 3D Buildings */}
         {customBuildings.length > 0 && (
@@ -409,6 +478,9 @@ export default function MapContainer({
         })}
       </Map>
 
+      {/* Pitch Control - Always visible */}
+      <PitchControl mapRef={mapRef} />
+
       {/* Building Editor UI - Hidden when hideControls is true */}
       {!hideControls && (
         <BuildingEditor
@@ -432,6 +504,17 @@ export default function MapContainer({
         <MuralModal
           mural={selectedMural}
           onClose={handleCloseModal}
+          onNavigate={onNavigate}
+          userLocation={userLocation}
+          distance={userLocation ? (() => {
+            const { calculateDistance } = require('@/utils/directions');
+            return calculateDistance(
+              userLocation.latitude,
+              userLocation.longitude,
+              selectedMural.location.coordinates.lat,
+              selectedMural.location.coordinates.lng
+            );
+          })() : null}
         />
       )}
 

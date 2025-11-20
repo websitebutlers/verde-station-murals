@@ -1,23 +1,44 @@
 'use client';
 
-import { useState } from 'react';
+import { useState, useMemo } from 'react';
 import { Mural } from '@/types/mural';
 import Image from 'next/image';
+import { calculateDistance, formatDistance } from '@/utils/directions';
 
 interface MuralLegendProps {
   murals: Mural[];
   onMuralSelect: (mural: Mural) => void;
   selectedMuralId?: string;
+  userLocation?: { latitude: number; longitude: number } | null;
 }
 
-export default function MuralLegend({ murals, onMuralSelect, selectedMuralId }: MuralLegendProps) {
+export default function MuralLegend({ murals, onMuralSelect, selectedMuralId, userLocation }: MuralLegendProps) {
   const [isOpen, setIsOpen] = useState(false);
 
   const getThumbnailUrl = (mural: Mural) => {
-    return mural.images && mural.images.length > 0 
-      ? mural.images[0].url 
+    return mural.images && mural.images.length > 0
+      ? mural.images[0].url
       : mural.image;
   };
+
+  // Calculate distances and sort murals by distance from user
+  const muralsWithDistance = useMemo(() => {
+    if (!userLocation) {
+      return murals.map(mural => ({ mural, distance: null }));
+    }
+
+    return murals
+      .map(mural => {
+        const distance = calculateDistance(
+          userLocation.latitude,
+          userLocation.longitude,
+          mural.location.coordinates.lat,
+          mural.location.coordinates.lng
+        );
+        return { mural, distance };
+      })
+      .sort((a, b) => (a.distance || 0) - (b.distance || 0));
+  }, [murals, userLocation]);
 
   return (
     <>
@@ -78,7 +99,7 @@ export default function MuralLegend({ murals, onMuralSelect, selectedMuralId }: 
         {/* Scrollable List */}
         <div className="overflow-y-auto max-h-[calc(100vh-12rem)] md:max-h-[calc(100vh-14rem)]">
           <div className="p-2 space-y-2">
-            {murals.map((mural) => {
+            {muralsWithDistance.map(({ mural, distance }) => {
               const isSelected = selectedMuralId === mural.id;
               const thumbnailUrl = getThumbnailUrl(mural);
 
@@ -127,6 +148,15 @@ export default function MuralLegend({ murals, onMuralSelect, selectedMuralId }: 
                       `}>
                         {mural.buildingCode}
                       </span>
+                      {distance !== null && (
+                        <span className="inline-flex items-center gap-1 px-2 py-0.5 rounded text-xs font-medium bg-blue-100 text-blue-700">
+                          <svg className="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
+                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
+                          </svg>
+                          {formatDistance(distance)}
+                        </span>
+                      )}
                     </div>
                   </div>
 

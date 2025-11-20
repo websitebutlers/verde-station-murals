@@ -1,8 +1,11 @@
 'use client';
 
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useCallback } from 'react';
 import dynamic from 'next/dynamic';
 import { Mural } from '@/types/mural';
+import { useGeolocation } from '@/hooks/useGeolocation';
+import { getWalkingDirections, calculateDistance, DirectionsRoute } from '@/utils/directions';
+import DirectionsPanel from '@/components/Map/DirectionsPanel';
 
 // Dynamically import MapContainer to avoid SSR issues with Mapbox
 const MapContainer = dynamic(() => import('@/components/Map/MapContainer'), {
@@ -20,6 +23,12 @@ const MapContainer = dynamic(() => import('@/components/Map/MapContainer'), {
 export default function EmbedMapPage() {
   const [murals, setMurals] = useState<Mural[]>([]);
   const [loading, setLoading] = useState(true);
+  const [activeRoute, setActiveRoute] = useState<DirectionsRoute | null>(null);
+  const [routeDestination, setRouteDestination] = useState<Mural | null>(null);
+  const [isLoadingRoute, setIsLoadingRoute] = useState(false);
+
+  // Get user's location
+  const { position: userPosition } = useGeolocation();
 
   // Load murals from API on mount
   useEffect(() => {
@@ -38,6 +47,37 @@ export default function EmbedMapPage() {
       }
     };
     loadMurals();
+  }, []);
+
+  // Handle navigation to a mural
+  const handleNavigate = useCallback(async (mural: Mural) => {
+    if (!userPosition) {
+      alert('Unable to get your location. Please enable location services.');
+      return;
+    }
+
+    setIsLoadingRoute(true);
+    try {
+      const route = await getWalkingDirections(
+        [userPosition.longitude, userPosition.latitude],
+        [mural.location.coordinates.lng, mural.location.coordinates.lat],
+        process.env.NEXT_PUBLIC_MAPBOX_TOKEN || ''
+      );
+
+      setActiveRoute(route.routes[0]);
+      setRouteDestination(mural);
+    } catch (error) {
+      console.error('Error fetching directions:', error);
+      alert('Unable to get directions. Please try again.');
+    } finally {
+      setIsLoadingRoute(false);
+    }
+  }, [userPosition]);
+
+  // Clear active route
+  const handleClearRoute = useCallback(() => {
+    setActiveRoute(null);
+    setRouteDestination(null);
   }, []);
 
   if (loading) {
@@ -59,12 +99,24 @@ export default function EmbedMapPage() {
         <p className="text-xs text-gray-600">Gilbert, AZ</p>
       </div>
 
+      {/* Directions Panel */}
+      {activeRoute && routeDestination && (
+        <DirectionsPanel
+          route={activeRoute}
+          destination={routeDestination}
+          onClose={handleClearRoute}
+        />
+      )}
+
       {/* Map Container - Full screen, no header */}
       <div className="w-full h-full">
         <MapContainer
           murals={murals}
           adminMode={false}
           hideControls={true}
+          userLocation={userPosition ? { latitude: userPosition.latitude, longitude: userPosition.longitude } : null}
+          activeRoute={activeRoute}
+          onNavigate={handleNavigate}
         />
       </div>
     </div>

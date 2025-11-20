@@ -11,7 +11,8 @@
     },
     "artist": {
       "name": "MDMN",
-      "socialMedia": "madmanart"
+      "socialMedia": "madmanart",
+      "bio": "I've been putting stickers of my characters up everywhere since 2011 and overtime they eventually got bigger and bigger. My work stems from the shapes and colors of my childhood in the 90s. Consisting of oversized illustrations, bright colors, and bold line weight in a comic book like style. The work is meant to leave the viewer empowered and thinking larger as you take on the daily commute. Mainly because that's what art does for me."
     },
     "image": "/murals/abstract-behind-p.jpg",
     "buildingCode": "14M",
@@ -45,7 +46,8 @@
     },
     "artist": {
       "name": "Mac",
-      "socialMedia": "macsh_"
+      "socialMedia": "macsh_",
+      "bio": "For the past couple of decades, Phoenix native Mac Schneider has been expressing in her medium of choice, aerosol. Her art journey started with displaying canvas work in local restaurants and galleries, evolving to large-scale mural work on business and residential walls. Mac's work can be viewed throughout the valley, with a heavy emphasis in Central Phoenix, to private resident murals, visible on her social media platforms. As she continues to express herself through murals, Mac hopes to travel and share her artwork across the states."
     },
     "image": "/murals/birds.jpg",
     "buildingCode": "NA",
@@ -103,7 +105,8 @@
     },
     "artist": {
       "name": "Price Goodman",
-      "socialMedia": "PriceGoodman"
+      "socialMedia": "PriceGoodman",
+      "bio": "33 year old Gabriel Pecina residing in Blythe, California is a freelance artist that specializes in large to small scale interior/exterior murals, digital illustrations, and original canvas paintings. He has murals in California, Arizona, Iowa, Nevada and plans on expanding his work throughout the rest of the country. Pecina quickly dove into the art world at the age of 13, through skateboarding and graffiti culture. He mastered techniques with a spray can throughout the years, which is now a huge part of his mural work to this day. He has also learned commercial/residential painting and also applies that knowledge to his mural creating process. He now primarily uses mixed media for all of his paintings with mediums such as acrylic/Latex, oil paint, ink, watercolor and aerosol spray paint. Many pieces of his work are inspired by nature, color, patterns, lettering, landscapes plus much more. His day to day work focuses on thought provoking concepts and original imagery that is timeless and speaks to all walks of life. Gabriel aims to create a catalog of work that stands out on its own amongst the growing art world."
     },
     "image": "/murals/concrete-face.jpg",
     "buildingCode": "13M",
@@ -147,7 +150,8 @@
     },
     "artist": {
       "name": "Tato Caraveo",
-      "socialMedia": "TatoCaraveo"
+      "socialMedia": "TatoCaraveo",
+      "bio": "My name is Tato Caraveo, I'm a native from Phoenix Arizona, I've been creating murals for over 25 years, 15 years professionally mainly in Arizona, with several murals around the US and other countries as well. My medium of choice is spray paint and/acrylics. Outside of mural art I'm also a studio artist creating canvas work for galleries and private commissions. My styles vary from realism to surrealism."
     },
     "image": "/murals/distorted-face.jpg",
     "buildingCode": "16M",
@@ -181,7 +185,8 @@
     },
     "artist": {
       "name": "Christina Thomas",
-      "socialMedia": "somethingsparkley"
+      "socialMedia": "somethingsparkley",
+      "bio": "Christina Thomas is a multidisciplinary artist whose work explores the unseen layers of reality. She creates murals and immersive installations that act as portals—inviting viewers into spaces of magic, reflection, and healing. Drawing from backgrounds in fine art, interior design, and fashion, Christina weaves together unlikely materials and symbolic contrasts to create public spaces that feel grounded in dreams."
     },
     "image": "/murals/dreamy-cotton-field.jpg",
     "buildingCode": "6M",
@@ -219,13 +224,14 @@
     "location": {
       "building": "Green",
       "coordinates": {
-        "lat": 33.306385055883354,
-        "lng": -111.70494252561446
+        "lat": 33.306228660275224,
+        "lng": -111.70513711302289
       }
     },
     "artist": {
       "name": "Just",
-      "socialMedia": "JustCreatedIt"
+      "socialMedia": "JustCreatedIt",
+      "bio": "\"Just\" Giovannie is a multidisciplinary artist specializing in public art, with a strong focus on large-scale murals that bring stories to life. As an athlete turned self-taught artist, my journey has been rooted in discovering my voice and sharing meaningful narratives through creative expression. My mission is to inspire others to embrace creativity, have fun, and relentlessly pursue their dreams."
     },
     "image": "/murals/electric-box.jpg",
     "buildingCode": "21M",
@@ -254,7 +260,8 @@
     },
     "artist": {
       "name": "Jason Begay",
-      "socialMedia": "PrimeAfterPrime"
+      "socialMedia": "PrimeAfterPrime",
+      "bio": "I'm a native Arizona artist based in Phoenix. My work focuses on murals that combine realistic portraits, desert landscapes, and plants. I use spray paint, acrylic, and airbrush to create pieces that reflect the environment and community around them. Being from Arizona, the desert plays a big role in what inspires me—its colors, textures, and natural forms show up in a lot of what I do. My designs often use mixed light sources and strong contrast, moving from intense highlights to deep shadows to create bold, dynamic visuals."
     },
     "image": "/murals/field-of-screams.jpg",
     "buildingCode": "5M",
@@ -298,7 +305,8 @@
     },
     "artist": {
       "name": "Isaac Caruso",
-      "socialMedia": "Isaac.Caruso"
+      "socialMedia": "Isaac.Caruso",
+      "bio": "Hello, my name is Isaac Nicholas Caruso. I'm an artist and creative director based in the Southwest with 13 years of professional experience. I make public art to communicate with communities. The imagery I paint is powerful and uplifting, so that I may transform my surroundings with positivity. My humble service as an artist is to create visual narratives that bind people together. I treat the act of painting murals as a performance piece, by showing my love for the neighborhoods I work with. I strive to involve the community as much as possible in my process. Either for the sake of place-making, entertaining, or enhancing the urban landscape, I try to make our world feel more connected through public art."
     },
     "image": "/murals/gilbert-mural.jpg",
     "buildingCode": "9M",
@@ -342,7 +350,8 @@
     },
     "artist": {
       "name": "Clyde Thompson",
-      "socialMedia": "clyde_0000"
+      "socialMedia": "clyde_0000",
+      "bio": "Clyde is an artist born and based out of Phoenix, Arizona with over 10 years of experience in completing large-scale murals. Known for a unique aesthetic exploring the relationship between art and architecture. Clyde's passion lies in creating an exciting and new experience for the viewer, while also contributing to the existing elements of a mural's surrounding space. He is inspired by architectural details, the surrounding environment, and the opportunity to create a unique connection to the place in which he is painting."
     },
     "image": "/murals/girl-flower-pannels.jpg",
     "buildingCode": "18M",
@@ -376,7 +385,8 @@
     },
     "artist": {
       "name": "Ieter91",
-      "socialMedia": "GabrielPecinaArt"
+      "socialMedia": "GabrielPecinaArt",
+      "bio": "I have lived in Phoenix for 26 years, 23 of those as a self-employed artist and decorative painter. I paint on canvas in oils and acrylics, mostly realism with a dash of pop art and surrealism. Painting murals and commissions generates most of my income, recently completing a large project for the LA County Fair. I received my BFA and MFA from the University of Illinois. I am proud to have received the Mayor's Arts Award in 2021. Art is philosophical for me and a place to contemplate how thoughts create stories and how imagination creates reality. I have a strong desire to assist people to experience life more fully. Through realism, careful attention to detail, rich colors and unusual points of view, my art can prompt a viewer to marvel at existence, to be more keenly aware of their surroundings and be more intrigued with their environment and their life."
     },
     "image": "/murals/horse-and-cowboy.jpg",
     "buildingCode": "4M",
@@ -410,7 +420,8 @@
     },
     "artist": {
       "name": "Smokey Joe",
-      "socialMedia": "SmokeyJoePaintingCo"
+      "socialMedia": "SmokeyJoePaintingCo",
+      "bio": "Joe Hunsaker, known professionally as Smokey Joe Paint Co., is a muralist and artist originally from Seattle, Washington. After relocating to Phoenix, Arizona, in 2015 to pursue higher education, he earned both a bachelor's degree in Marketing and an MBA from Grand Canyon University. During this time, he also cultivated his artistic skills and launched his creative business. Joe began his career showcasing art at First Fridays in downtown Phoenix and has since grown into a full-time artist whose work has taken him to Oregon, Nevada, and Alaska. His portfolio includes large-scale murals—some spanning over 100 feet—as well as smaller, highly detailed canvas pieces. His clients include national brands such as Chick-fil-A, Sam's Club/Walmart, Lectric E-Bikes, and Cheba Hut, as well as local businesses and private residences. Proficient in multiple mediums, Joe primarily works with Latex and Acrylic brush paint as well as spray paint and airbrush, and he tailors his approach to suit the environment and surface. When he's not creating his own personal art pieces or working on his craft, he listens closely to clients' visions, offering artistic guidance to enhance the final result of his clients' projects. His focus is always on exceeding expectations—a goal supported by repeat clients and glowing reviews. Over the past six years, Joe has built a reputation for bringing vibrant, meaningful art to a wide range of spaces, combining technical precision with bold creativity in every piece he creates."
     },
     "image": "/murals/jimi-hendrix.jpg",
     "buildingCode": "17M",
@@ -444,7 +455,8 @@
     },
     "artist": {
       "name": "Nyla Lee",
-      "socialMedia": "nyla.lee"
+      "socialMedia": "nyla.lee",
+      "bio": "Phoenix based artist, Nyla Lee, has been perpetually building her artistic style for the past several years seeking to reshape portraits through color. She paints vibrant imagery that embodies strength and playful movements that pull you into her whimsical world of creativity. Her work often portrays elegant emotions that intend to make a deeper connection to its viewers which she often demonstrates through spray-paint and acrylic paints. She continues to broaden her work through various projects across the country."
     },
     "image": "/murals/love-peace-adjacent-murals.jpg",
     "buildingCode": "15M",
@@ -488,7 +500,8 @@
     },
     "artist": {
       "name": "ABOMBTHEARTIST",
-      "socialMedia": "ABOMBTHEARTIST"
+      "socialMedia": "ABOMBTHEARTIST",
+      "bio": "Abomb the artist is an Arizona native who has been creating in several mediums for over 30 years. After embracing graffiti in the mid-80s, his style continues to evolve. Whether it's large-scale murals or small acrylic canvases, his work can be seen throughout the City of Phoenix and local art galleries. His recent collaboration with State Forty Eight, the Phoenix Suns, The Arizona Cardinals, ASU, Carvana, The Phoenix rising Soccer Club, and The Valley Metro light rail project ensures that his creative vision will leave an impression to last for years to come."
     },
     "image": "/murals/low-rider-truck.jpg",
     "buildingCode": "11M",
@@ -522,7 +535,8 @@
     },
     "artist": {
       "name": "IZE",
-      "socialMedia": "ize_official"
+      "socialMedia": "ize_official",
+      "bio": "Born in Mexico City and raised in Arizona, I've been driven by a passion for art since childhood, aspiring to inspire others through my creations. Going by the name Ize, is a nod to the way we perceive the world through our eyes. I'm a self-taught artist whose work is deeply influenced by my interests in fashion, cinema, music, and psychology. My art uniquely blends Mexican and American pop art, often featuring polka dots that symbolize the sphere of an eye, prompting viewers to consider different perspectives. I am committed to using my art to brighten communities, spark new ideas, and encourage questioning the norm."
     },
     "image": "/murals/manny-moe-jack.jpg",
     "buildingCode": "20M",
@@ -561,7 +575,8 @@
     },
     "artist": {
       "name": "Tato Caraveo",
-      "socialMedia": "TatoCaraveo"
+      "socialMedia": "TatoCaraveo",
+      "bio": "My name is Tato Caraveo, I'm a native from Phoenix Arizona, I've been creating murals for over 25 years, 15 years professionally mainly in Arizona, with several murals around the US and other countries as well. My medium of choice is spray paint and/acrylics. Outside of mural art I'm also a studio artist creating canvas work for galleries and private commissions. My styles vary from realism to surrealism."
     },
     "image": "/murals/musician.jpg",
     "buildingCode": "2M",
@@ -590,7 +605,8 @@
     },
     "artist": {
       "name": "Jessie Yazzie",
-      "socialMedia": "jessie.yazzie"
+      "socialMedia": "jessie.yazzie",
+      "bio": "Jesse Dorian Yazzie is a notable muralist, artist, and entrepreneur in Phoenix, Arizona, known for his profound integration of Navajo cultural elements with the boldness of Chicano street art. Born and raised in Phoenix with strong connections to the Navajo Reservation, Yazzie's art serves as a cultural bridge, reflecting his personal journey of resilience and transformation. His artistic career was ignited by his brother Vince, a graffiti artist, and further shaped by his life experiences, including a period of incarceration that led him to use art as a tool for personal recovery and expression. Yazzie has contributed over 30 murals to Arizona's public spaces, each telling a story of cultural identity, healing, and triumph over adversity. Beyond his murals, he operates a screen printing business and is developing his own apparel line, showcasing his entrepreneurial spirit and commitment to the local arts scene."
     },
     "image": "/murals/navajo-hoop-dancer.jpg",
     "buildingCode": "12M",
@@ -624,7 +640,8 @@
     },
     "artist": {
       "name": "Just",
-      "socialMedia": "JustCreatedIt"
+      "socialMedia": "JustCreatedIt",
+      "bio": "\"Just\" Giovannie is a multidisciplinary artist specializing in public art, with a strong focus on large-scale murals that bring stories to life. As an athlete turned self-taught artist, my journey has been rooted in discovering my voice and sharing meaningful narratives through creative expression. My mission is to inspire others to embrace creativity, have fun, and relentlessly pursue their dreams."
     },
     "image": "/murals/peony.jpg",
     "buildingCode": "19M",
@@ -697,7 +714,8 @@
     },
     "artist": {
       "name": "Smokey Joe",
-      "socialMedia": "SmokeyJoePaintingCo"
+      "socialMedia": "SmokeyJoePaintingCo",
+      "bio": "Joe Hunsaker, known professionally as Smokey Joe Paint Co., is a muralist and artist originally from Seattle, Washington. After relocating to Phoenix, Arizona, in 2015 to pursue higher education, he earned both a bachelor's degree in Marketing and an MBA from Grand Canyon University. During this time, he also cultivated his artistic skills and launched his creative business. Joe began his career showcasing art at First Fridays in downtown Phoenix and has since grown into a full-time artist whose work has taken him to Oregon, Nevada, and Alaska. His portfolio includes large-scale murals—some spanning over 100 feet—as well as smaller, highly detailed canvas pieces. His clients include national brands such as Chick-fil-A, Sam's Club/Walmart, Lectric E-Bikes, and Cheba Hut, as well as local businesses and private residences. Proficient in multiple mediums, Joe primarily works with Latex and Acrylic brush paint as well as spray paint and airbrush, and he tailors his approach to suit the environment and surface. When he's not creating his own personal art pieces or working on his craft, he listens closely to clients' visions, offering artistic guidance to enhance the final result of his clients' projects. His focus is always on exceeding expectations—a goal supported by repeat clients and glowing reviews. Over the past six years, Joe has built a reputation for bringing vibrant, meaningful art to a wide range of spaces, combining technical precision with bold creativity in every piece he creates."
     },
     "image": "/murals/utility-box.jpg",
     "buildingCode": "8M",
@@ -731,7 +749,8 @@
     },
     "artist": {
       "name": "Tony Plak",
-      "socialMedia": "tonyplak"
+      "socialMedia": "tonyplak",
+      "bio": "My name is Antonio Lucero, known as \"Tony Plak\", architect by profession and visual artist, creator of murals in public and private spaces, integrating the architecture of the place, including the vegetation of the region, among others. I have worked for several years doing murals in various universities, offices, and businesses, among others. During the last years I have had the opportunity to work between the border of Sonora-Arizona, as well as in the public administration within the Youth Institute of my municipality making artistic interventions in neighborhoods with young people, I have had the opportunity to make murals for large companies in Mexico as Caffenio, Maquiladora Molex, a mega mural for the Hogares Foundation through SEDATU, as well as in the U.S.A. with the company \"PepsiCo\", and in the U.S.A. with the company \"PepsiCo\". U.A. with the company \"Pepsi\" works that were exposed in events of the Super Bowl 2023, several murals for the city of Nogales, Arizona, for Tucson, Arizona, murals for Nogales High School, the University of Arizona, and various institutions. In addition, I have more than five years doing murals in public spaces, where I have painted such as universities, offices, schools, businesses, and workshops, so I am well-trained and experienced to perform this project in an exceptional way. During the last few years, I have had the opportunity to do several murals between the borders of Sonora and Arizona."
     },
     "image": "/murals/welcome.jpg",
     "buildingCode": "3M",
@@ -775,7 +794,8 @@
     },
     "artist": {
       "name": "Bacon Cat",
-      "socialMedia": "Baconcat"
+      "socialMedia": "Baconcat",
+      "bio": "I am baconcat from Tempe, AZ. I do spray paint and other kinds of thing, but mostly I just do murals. I like cheeseburgers, my cat, and painting."
     },
     "image": "/murals/whimsical-tiger.jpg",
     "buildingCode": "1M",

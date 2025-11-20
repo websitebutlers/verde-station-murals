@@ -4,14 +4,19 @@ import { useEffect, useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Mural } from '@/types/mural';
 import Image from 'next/image';
+import { formatDistance } from '@/utils/directions';
 
 interface MuralModalProps {
   mural: Mural;
   onClose: () => void;
+  onNavigate?: (mural: Mural) => void;
+  userLocation?: { latitude: number; longitude: number } | null;
+  distance?: number | null;
 }
 
-export default function MuralModal({ mural, onClose }: MuralModalProps) {
+export default function MuralModal({ mural, onClose, onNavigate, userLocation, distance }: MuralModalProps) {
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
+  const [showFullBio, setShowFullBio] = useState(false);
 
   // Get images array, fallback to legacy single image
   const images = mural.images && mural.images.length > 0
@@ -190,6 +195,33 @@ export default function MuralModal({ mural, onClose }: MuralModalProps) {
                 </div>
               </div>
 
+              {/* Navigation Button */}
+              {userLocation && onNavigate && (
+                <div className="mb-6 p-4 bg-blue-50 rounded-lg border border-blue-200">
+                  <div className="flex items-center justify-between">
+                    <div>
+                      <h3 className="text-sm font-semibold text-blue-900 mb-1">
+                        Get Walking Directions
+                      </h3>
+                      {distance !== null && distance !== undefined && (
+                        <p className="text-sm text-blue-700">
+                          {formatDistance(distance)} away
+                        </p>
+                      )}
+                    </div>
+                    <button
+                      onClick={() => onNavigate(mural)}
+                      className="flex items-center gap-2 px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-all duration-200 hover:scale-105 shadow-md"
+                    >
+                      <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 20l-5.447-2.724A1 1 0 013 16.382V5.618a1 1 0 011.447-.894L9 7m0 13l6-3m-6 3V7m6 10l4.553 2.276A1 1 0 0021 18.382V7.618a1 1 0 00-.553-.894L15 4m0 13V4m0 0L9 7" />
+                      </svg>
+                      <span>Navigate</span>
+                    </button>
+                  </div>
+                </div>
+              )}
+
               {/* Artist Information */}
               <div className="border-t border-gray-200 pt-6">
                 <h3 className="text-sm font-semibold text-gray-500 uppercase tracking-wider mb-3">
@@ -219,13 +251,31 @@ export default function MuralModal({ mural, onClose }: MuralModalProps) {
                 </div>
               </div>
 
-              {/* Coordinates (for admin reference) */}
-              <div className="mt-6 p-4 bg-gray-50 rounded-lg">
-                <p className="text-sm text-gray-600">
-                  <span className="font-semibold">Coordinates:</span>{' '}
-                  {mural.location.coordinates.lat.toFixed(6)}, {mural.location.coordinates.lng.toFixed(6)}
-                </p>
-              </div>
+              {/* Artist Bio */}
+              {mural.artist.bio && (
+                <div className="mt-6 p-4 bg-gray-50 rounded-lg">
+                  <h4 className="text-sm font-semibold text-gray-700 uppercase tracking-wider mb-2">
+                    About the Artist
+                  </h4>
+                  <div className="text-gray-700 leading-relaxed">
+                    {mural.artist.bio.length > 300 ? (
+                      <>
+                        <p className="text-sm">
+                          {showFullBio ? mural.artist.bio : `${mural.artist.bio.substring(0, 300)}...`}
+                        </p>
+                        <button
+                          onClick={() => setShowFullBio(!showFullBio)}
+                          className="mt-2 text-sm font-semibold text-blue-600 hover:text-blue-700 transition-colors duration-200"
+                        >
+                          {showFullBio ? 'Read less' : 'Read more'}
+                        </button>
+                      </>
+                    ) : (
+                      <p className="text-sm">{mural.artist.bio}</p>
+                    )}
+                  </div>
+                </div>
+              )}
             </div>
           </div>
         </motion.div>
